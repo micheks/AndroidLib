@@ -1,9 +1,10 @@
 package com.alliky.sample;
 
 import android.os.Bundle;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.alliky.core.Toasty;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -12,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toast.makeText(this, "000000", Toast.LENGTH_SHORT).show();
+        Toasty.normal(this,"这是什么").show();
+
     }
 }
