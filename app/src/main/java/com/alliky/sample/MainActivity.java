@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.alliky.core.Toasty;
+import com.alliky.core.util.Toasty;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toasty.normal(this,"这是什么").show();
+        Toasty.normal(this,"这是什么");
 
     }
 }

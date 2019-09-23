@@ -1,4 +1,4 @@
-package com.alliky.core;
+package com.alliky.core.util;
 
 import android.content.Context;
 import android.graphics.PorterDuff;
@@ -13,6 +13,8 @@ import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.content.ContextCompat;
+
+import com.alliky.core.R;
 
 /**
  * This file is part of Toasty.

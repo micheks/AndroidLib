@@ -1,4 +1,4 @@
-package com.alliky.core;
+package com.alliky.core.util;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -17,6 +17,8 @@ import androidx.annotation.ColorRes;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
+
+import com.alliky.core.R;
 
 @SuppressLint("InflateParams")
 public class Toasty {
@@ -314,6 +316,7 @@ public class Toasty {
                 lastToast.cancel();
             lastToast = currentToast;
         }
+        currentToast.show();
 
         return currentToast;
     }
