@@ -1,8 +1,9 @@
-package com.alliky.androidlib;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.alliky.sample;
 
 import android.os.Bundle;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -11,6 +12,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        android.widget.Toast.makeText("<>>>>", "0000", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "000000", Toast.LENGTH_SHORT).show();
     }
 }
