@@ -2,7 +2,6 @@ package com.alliky.core.base;
 
 import androidx.annotation.Nullable;
 
-import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 

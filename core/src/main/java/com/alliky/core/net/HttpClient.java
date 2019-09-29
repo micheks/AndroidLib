@@ -14,6 +14,7 @@ import com.alliky.core.net.loader.Loader;
 import com.alliky.core.net.loader.LoaderStyle;
 import com.alliky.core.util.NetUtil;
 import com.alliky.core.util.Toasty;
+import com.blankj.utilcode.util.ToastUtils;
 
 import java.io.File;
 import java.util.Map;
@@ -120,6 +121,7 @@ public final class HttpClient {
 //            HEADERS.put("_version", AppUtil.getVersionName(Kylin.getApplicationContext()));
 //            HEADERS.put("platform", "android");
 //        }
+
 
 
         if (!NetUtil.isConnected(Kylin.getApplicationContext())) {
