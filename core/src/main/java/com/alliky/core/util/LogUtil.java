@@ -1,8 +1,12 @@
 package com.alliky.core.util;
 
-import com.orhanobut.logger.Logger;
 
-public final class LOGGER {
+/**
+ * @Description: DOTO
+ * @Author: wxianing
+ * @CreateDate: 2019/9/29 17:28
+ */
+public final class LogUtil {
 
     private static final String TAG = "dy_log";
     private static final int VERBOSE = 1;
@@ -18,86 +22,86 @@ public final class LOGGER {
     public static void v(String tag, String message) {
 
         if (LEVEL <= VERBOSE) {
-            Logger.t(tag).v(message);
+            com.orhanobut.logger.Logger.t(tag).v(message);
         }
     }
 
     public static void v(String message) {
 
         if (LEVEL <= VERBOSE) {
-            Logger.t(TAG).v(message);
+            com.orhanobut.logger.Logger.t(TAG).v(message);
         }
     }
 
     public static void d(String tag, Object message) {
         if (LEVEL <= DEBUG) {
-            Logger.t(tag).d(message);
+            com.orhanobut.logger.Logger.t(tag).d(message);
         }
     }
 
     public static void d(Object message) {
         if (LEVEL <= DEBUG) {
-            Logger.d(message);
+            com.orhanobut.logger.Logger.d(message);
         }
     }
 
     public static void i(String tag, String message) {
         if (LEVEL <= INFO) {
-            Logger.t(tag).i(message);
+            com.orhanobut.logger.Logger.t(tag).i(message);
         }
     }
 
     public static void i(String message) {
         if (LEVEL <= INFO) {
-            Logger.t(TAG).i(message);
+            com.orhanobut.logger.Logger.t(TAG).i(message);
         }
     }
 
     public static void w(String tag, String message) {
         if (LEVEL <= WARN) {
-            Logger.t(tag).w(message);
+            com.orhanobut.logger.Logger.t(tag).w(message);
         }
     }
 
     public static void w(String message) {
         if (LEVEL <= WARN) {
-            Logger.t(TAG).w(message);
+            com.orhanobut.logger.Logger.t(TAG).w(message);
         }
     }
 
     public static void json(String tag, String message) {
         if (LEVEL <= WARN) {
-            Logger.t(tag).json(message);
+            com.orhanobut.logger.Logger.t(tag).json(message);
         }
     }
 
     public static void json(String message) {
         if (LEVEL <= WARN) {
-            Logger.t(TAG).json(message);
+            com.orhanobut.logger.Logger.t(TAG).json(message);
         }
     }
 
     public static void e(String tag, String message) {
         if (LEVEL <= ERROR) {
-            Logger.t(tag).e(message);
+            com.orhanobut.logger.Logger.t(tag).e(message);
         }
     }
 
     public static void e(String message) {
         if (LEVEL <= ERROR) {
-            Logger.t(TAG).e(message);
+            com.orhanobut.logger.Logger.t(TAG).e(message);
         }
     }
 
     public static void wtf(String tag, String message) {
         if (LEVEL <= ERROR) {
-            Logger.t(tag).wtf(message);
+            com.orhanobut.logger.Logger.t(tag).wtf(message);
         }
     }
 
     public static void wtf(String message) {
         if (LEVEL <= ERROR) {
-            Logger.t(TAG).wtf(message);
+            com.orhanobut.logger.Logger.t(TAG).wtf(message);
         }
     }
 }

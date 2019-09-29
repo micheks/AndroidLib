@@ -7,6 +7,11 @@ import com.chad.library.adapter.base.BaseViewHolder;
 
 import java.util.List;
 
+/**
+ * @Description: DOTO 通用适配器
+ * @Author: wxianing
+ * @CreateDate: 2019/9/29 17:18
+ */
 public abstract class CommonQuickAdapter<T> extends BaseQuickAdapter<T, BaseViewHolder> {
 
     public CommonQuickAdapter(int layoutResId, @Nullable List<T> data) {

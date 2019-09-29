@@ -11,7 +11,7 @@ import com.alliky.core.net.callback.IRequest;
 import com.alliky.core.net.callback.ISuccess;
 import com.alliky.core.net.loader.Loader;
 import com.alliky.core.net.loader.LoaderStyle;
-import com.alliky.core.util.LOGGER;
+import com.alliky.core.util.LogUtil;
 
 import java.util.WeakHashMap;
 
@@ -60,12 +60,12 @@ public final class RequestCallbacks implements Callback<String> {
                             paramJson = JSON.toJSONString(mParams);
                         }
 
-                        LOGGER.i("response", "URL：" + URL + "\n\n"
+                        LogUtil.i("response", "URL：" + URL + "\n\n"
                                 + "param：" + paramJson + "\n\n"
                                 + response.body());
                     } catch (Exception e) {
                         e.printStackTrace();
-                        LOGGER.e("Exception", e.getMessage());
+                        LogUtil.e("Exception", e.getMessage());
                     }
                 }
             }
@@ -82,7 +82,7 @@ public final class RequestCallbacks implements Callback<String> {
     @Override
     public void onFailure(Call<String> call, Throwable t) {
 
-        LOGGER.e("onFailure", "URL：" + URL + "\n\n" + t.getMessage());
+        LogUtil.e("onFailure", "URL：" + URL + "\n\n" + t.getMessage());
 
 //        if (t instanceof SocketTimeoutException) {
 //            ToastUtil.showl(Kylin.getContext(), "网络请求超时");

@@ -13,13 +13,19 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Map;
 
-public class SPUtils {
+/**
+ * @Description: DOTO
+ * @Author: wxianing
+ * @CreateDate: 2019/9/29 17:28
+ */
+
+public class SPUtil {
     /**
      * 保存在手机里面的文件名
      */
     public static final String FILE_NAME = "config_crmim";
 
-    public SPUtils() {
+    public SPUtil() {
         throw new UnsupportedOperationException("cannot be instantiated");
     }
 
@@ -203,7 +209,7 @@ public class SPUtils {
             sharedata.commit();
         } catch (IOException e) {
             e.printStackTrace();
-            LOGGER.i("", "保存obj失败");
+            LogUtil.i("", "保存obj失败");
         }
     }
 

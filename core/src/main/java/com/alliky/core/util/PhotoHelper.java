@@ -12,7 +12,7 @@ import android.provider.MediaStore;
 
 /**
  *  小米手机获取本地相册图片出现空指针异常处理类
- * @author dec
+ * @author wxianing
  */
 public class PhotoHelper {
 
