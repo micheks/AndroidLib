@@ -1,6 +1,8 @@
 package com.alliky.core.util;
 
 
+import com.blankj.utilcode.util.ToastUtils;
+
 /**
  * @Description: DOTO
  * @Author: wxianing
@@ -24,6 +26,7 @@ public final class LogUtil {
         if (LEVEL <= VERBOSE) {
             com.orhanobut.logger.Logger.t(tag).v(message);
         }
+
     }
 
     public static void v(String message) {
