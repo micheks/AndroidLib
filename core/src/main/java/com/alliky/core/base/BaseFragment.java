@@ -71,7 +71,7 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onEvent(EventMessage event) {
+    public void onEvent(EventMessage message) {
 
     }
 

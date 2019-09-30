@@ -1,8 +1,5 @@
 package com.alliky.core.util;
 
-
-import com.blankj.utilcode.util.ToastUtils;
-
 /**
  * @Description: DOTO
  * @Author: wxianing
@@ -10,7 +7,7 @@ import com.blankj.utilcode.util.ToastUtils;
  */
 public final class LogUtil {
 
-    private static final String TAG = "dy_log";
+    private static final String TAG = "LogUtil";
     private static final int VERBOSE = 1;
     private static final int DEBUG = 2;
     private static final int INFO = 3;

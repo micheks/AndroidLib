@@ -72,7 +72,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onEvent(EventMessage event) {
+    public void onEvent(EventMessage message) {
 
     }
 
