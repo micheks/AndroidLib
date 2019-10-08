@@ -21,4 +21,6 @@ public class MyApplication extends BaseApplication {
                 .withInterceptor(new DebugInterceptor("test", R.raw.test))
                 .configure();
     }
+
+
 }
