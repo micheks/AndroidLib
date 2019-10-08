@@ -23,16 +23,17 @@ dependencies {
 
 ``` 
 public class MyApplication extends BaseApplication {
-        
-            @Override
-            public void onCreate() {
-                super.onCreate();
-                //初始化常用配置
-                Kylin.init(this)
-                        .withLoaderDelayed(500)
-                        .withApiHost("http://192.168.2.9:88/")
-                        .withInterceptor(new DebugInterceptor("test", R.raw.test))
-                        .configure();
-            }
-        }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        //初始化常用配置
+        Kylin.init(this)
+                .withLoaderDelayed(500)
+                .withApiHost("http://192.168.2.9:88/")
+                .withInterceptor(new DebugInterceptor("test", R.raw.test))
+                .configure();
+    }
+}
+
 ``` 
