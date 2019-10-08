@@ -18,7 +18,7 @@ import java.io.File;
 /**
  * 图片选择工具类
  */
-public class PhotoUtil {
+public class PhotoUtils {
 
     public static final int TAKE_PHOTO = 10001;
     public static final int SELECT_PHOTO = 10002;
@@ -43,10 +43,10 @@ public class PhotoUtil {
     OnSelectListener mListener;
 
     private static class Holder {
-        private static final PhotoUtil instance = new PhotoUtil();
+        private static final PhotoUtils instance = new PhotoUtils();
     }
 
-    public static PhotoUtil getInstance() {
+    public static PhotoUtils getInstance() {
         return Holder.instance;
     }
 
@@ -170,7 +170,7 @@ public class PhotoUtil {
     public void bindForResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == Activity.RESULT_OK) {
             switch (requestCode) {
-                case PhotoUtil.TAKE_PHOTO://拍照
+                case PhotoUtils.TAKE_PHOTO://拍照
                     mInputFile = new File(imgPath);
                     if (mShouldCrop) {
                         mOutputFile = new File(generateImgePath());
@@ -183,7 +183,7 @@ public class PhotoUtil {
                         }
                     }
                     break;
-                case PhotoUtil.SELECT_PHOTO://图库
+                case PhotoUtils.SELECT_PHOTO://图库
                     if (data != null) {
                         Uri uri = data.getData();
                         String imgPath = PhotoHelper.getPath(mActivity, uri);  // 获取图片路径的方法调用
@@ -201,7 +201,7 @@ public class PhotoUtil {
                         }
                     }
                     break;
-                case PhotoUtil.CROP_PHOTO://裁剪
+                case PhotoUtils.CROP_PHOTO://裁剪
                     if (data != null) {
                         if (mOutputUri != null) {
                             //删除拍照的临时照片

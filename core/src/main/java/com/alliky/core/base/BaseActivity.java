@@ -127,7 +127,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         startActivityForResult(intent, requestCode);
     }
 
-    public void ToastMsg(String message){
+    public void Toast(String message){
         Toasty.normal(mContext,message).show();
     }
 

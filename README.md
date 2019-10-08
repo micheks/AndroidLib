@@ -173,7 +173,7 @@ HttpClient.builder()
 
 ``` 
 //拍照货相册选择回调
-PhotoUtil.getInstance().init(this, false, new PhotoUtil.OnSelectListener() {
+PhotoUtils.getInstance().init(this, false, new PhotoUtil.OnSelectListener() {
     @Override
     public void onFinish(File outputFile, Uri outputUri) {
         //TODO 返回图片文件
@@ -191,3 +191,4 @@ protected void onActivityResult(int requestCode, int resultCode, @Nullable Inten
     super.onActivityResult(requestCode, resultCode, data);
 }
 ``` 
+
