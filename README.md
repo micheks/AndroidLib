@@ -18,8 +18,11 @@ dependencies {
 ```
 
 ### 代码具体调用说明
- 1.在Application中初始化配置 
- public class MyApplication extends BaseApplication {
+
+一.在Application中初始化配置 
+
+``` 
+public class MyApplication extends BaseApplication {
         
             @Override
             public void onCreate() {
@@ -32,4 +35,4 @@ dependencies {
                         .configure();
             }
         }
-
+``` 
