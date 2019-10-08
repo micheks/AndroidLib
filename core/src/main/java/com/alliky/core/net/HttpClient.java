@@ -50,10 +50,6 @@ public final class HttpClient {
     private final File FILE;
     private final Context CONTEXT;
 
-    private final boolean ISINTERCEPT;
-
-    private final String MESSAGE;
-
     HttpClient(String url,
                Map<String, Object> params,
                Map<String, String> headers,
@@ -69,8 +65,6 @@ public final class HttpClient {
                File file,
                Context context,
                boolean cancelable,
-               boolean isIntercept,
-               String message,
                LoaderStyle loaderStyle) {
         this.URL = url;
         PARAMS.putAll(params);
@@ -87,8 +81,6 @@ public final class HttpClient {
         this.FILE = file;
         this.CANCELABLE = cancelable;
         this.CONTEXT = context;
-        this.ISINTERCEPT = isIntercept;
-        this.MESSAGE = message;
         this.LOADER_STYLE = loaderStyle;
     }
 
@@ -213,6 +205,4 @@ public final class HttpClient {
                 SUCCESS, LOADING, FAILURE, ERROR)
                 .handleDownload();
     }
-
-
 }

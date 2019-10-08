@@ -38,20 +38,12 @@ public final class HttpClientBuilder {
     private String mName = null;
     private boolean mCancelable = true;
 
-    private boolean mIsIntercept = true;
-    private String mMessage = null;
-
 
     HttpClientBuilder() {
     }
 
     public final HttpClientBuilder url(String url) {
         this.mUrl = url;
-        return this;
-    }
-
-    public final HttpClientBuilder isIntercept(boolean isIntercept) {
-        this.mIsIntercept = isIntercept;
         return this;
     }
 
@@ -142,13 +134,6 @@ public final class HttpClientBuilder {
         return this;
     }
 
-
-    public final HttpClientBuilder loader(Context context, String message) {
-        this.mContext = context;
-        this.mMessage = message;
-        return this;
-    }
-
     public final HttpClientBuilder loader(Context context, boolean cancelable) {
         this.mContext = context;
         this.mLoaderStyle = LoaderStyle.BallSpinFadeLoaderIndicator;
@@ -161,8 +146,6 @@ public final class HttpClientBuilder {
                 mDownloadDir, mExtension, mName,
                 mIRequest, mISuccess, mILoading, mIFailure,
                 mIError, mBody, mFile, mContext, mCancelable,
-                mIsIntercept,
-                mMessage,
                 mLoaderStyle);
     }
 }
