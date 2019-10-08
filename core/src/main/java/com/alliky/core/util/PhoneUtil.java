@@ -13,8 +13,6 @@ import android.text.TextUtils;
 
 import androidx.annotation.RequiresPermission;
 
-import com.blankj.utilcode.util.Utils;
-
 import java.util.List;
 
 import static android.Manifest.permission.CALL_PHONE;
@@ -26,8 +24,8 @@ import static android.Manifest.permission.SEND_SMS;
  * @Author: wxianing
  * @CreateDate: 2019/9/29 18:17
  */
-public class PhoneUtils {
-    private PhoneUtils() {
+public class PhoneUtil {
+    private PhoneUtil() {
         throw new UnsupportedOperationException("u can't instantiate me...");
     }
 

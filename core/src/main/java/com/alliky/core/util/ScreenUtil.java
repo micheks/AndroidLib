@@ -19,8 +19,6 @@ import android.view.WindowManager;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresPermission;
 
-import com.blankj.utilcode.util.Utils;
-
 import static android.Manifest.permission.WRITE_SETTINGS;
 
 /**
@@ -28,8 +26,8 @@ import static android.Manifest.permission.WRITE_SETTINGS;
  * @Author: wxianing
  * @CreateDate: 2019/9/29 18:14
  */
-public class ScreenUtils {
-    private ScreenUtils() {
+public class ScreenUtil {
+    private ScreenUtil() {
         throw new UnsupportedOperationException("u can't instantiate me...");
     }
 

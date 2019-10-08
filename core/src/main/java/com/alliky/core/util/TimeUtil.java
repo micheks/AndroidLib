@@ -2,7 +2,8 @@ package com.alliky.core.util;
 
 import androidx.annotation.NonNull;
 
-import com.blankj.utilcode.constant.TimeConstants;
+
+import com.alliky.core.constant.TimeConstants;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -16,7 +17,8 @@ import java.util.Locale;
  * @Author: wxianing
  * @CreateDate: 2019/9/29 18:05
  */
-public class TimeUtils { private static final ThreadLocal<SimpleDateFormat> SDF_THREAD_LOCAL = new ThreadLocal<>();
+public class TimeUtil {
+    private static final ThreadLocal<SimpleDateFormat> SDF_THREAD_LOCAL = new ThreadLocal<>();
 
     private static SimpleDateFormat getDefaultFormat() {
         SimpleDateFormat simpleDateFormat = SDF_THREAD_LOCAL.get();
@@ -27,7 +29,7 @@ public class TimeUtils { private static final ThreadLocal<SimpleDateFormat> SDF_
         return simpleDateFormat;
     }
 
-    private TimeUtils() {
+    private TimeUtil() {
         throw new UnsupportedOperationException("u can't instantiate me...");
     }
 
@@ -1333,8 +1335,8 @@ public class TimeUtils { private static final ThreadLocal<SimpleDateFormat> SDF_
         return CHINESE_ZODIAC[year % 12];
     }
 
-    private static final int[]    ZODIAC_FLAGS = {20, 19, 21, 21, 21, 22, 23, 23, 23, 24, 23, 22};
-    private static final String[] ZODIAC       = {
+    private static final int[] ZODIAC_FLAGS = {20, 19, 21, 21, 21, 22, 23, 23, 23, 24, 23, 22};
+    private static final String[] ZODIAC = {
             "水瓶座", "双鱼座", "白羊座", "金牛座", "双子座", "巨蟹座",
             "狮子座", "处女座", "天秤座", "天蝎座", "射手座", "魔羯座"
     };

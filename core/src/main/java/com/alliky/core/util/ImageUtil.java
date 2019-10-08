@@ -36,8 +36,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.core.content.ContextCompat;
 
-import com.blankj.utilcode.util.Utils;
-
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -53,8 +51,8 @@ import java.io.OutputStream;
  * @Author: wxianing
  * @CreateDate: 2019/9/29 18:20
  */
-public class ImageUtils {
-    private ImageUtils() {
+public class ImageUtil {
+    private ImageUtil() {
         throw new UnsupportedOperationException("u can't instantiate me...");
     }
 

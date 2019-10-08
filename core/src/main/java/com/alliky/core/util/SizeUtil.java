@@ -6,15 +6,13 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.blankj.utilcode.util.Utils;
-
 /**
  * @Description: DOTO
  * @Author: wxianing
  * @CreateDate: 2019/9/29 18:13
  */
-public class SizeUtils {
-    private SizeUtils() {
+public class SizeUtil {
+    private SizeUtil() {
         throw new UnsupportedOperationException("u can't instantiate me...");
     }
 
@@ -95,7 +93,7 @@ public class SizeUtils {
      * Force get the size of view.
      * <p>e.g.</p>
      * <pre>
-     * SizeUtils.forceGetViewSize(view, new SizeUtils.onGetSizeListener() {
+     * SizeUtil.forceGetViewSize(view, new SizeUtil.onGetSizeListener() {
      *     Override
      *     public void onGetSize(final View view) {
      *         view.getWidth();
@@ -106,7 +104,7 @@ public class SizeUtils {
      * @param view     The view.
      * @param listener The get size listener.
      */
-    public static void forceGetViewSize(final View view, final com.blankj.utilcode.util.SizeUtils.onGetSizeListener listener) {
+    public static void forceGetViewSize(final View view, final onGetSizeListener listener) {
         view.post(new Runnable() {
             @Override
             public void run() {

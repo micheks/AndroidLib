@@ -5,6 +5,7 @@ import android.os.Handler;
 
 import androidx.annotation.NonNull;
 
+import com.alliky.core.util.Utils;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.DiskLogAdapter;
 import com.orhanobut.logger.Logger;
@@ -45,7 +46,7 @@ public final class Configurator {
         Logger.addLogAdapter(new AndroidLogAdapter());
         Logger.addLogAdapter(new DiskLogAdapter());
         LATTE_CONFIGS.put(ConfigKeys.CONFIG_READY, true);
-//        Utils.init(Kylin.getApplicationContext());
+        Utils.init(Kylin.getApplicationContext());
     }
     public final Configurator withInterceptor(Interceptor interceptor) {
         INTERCEPTORS.add(interceptor);

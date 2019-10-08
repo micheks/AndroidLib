@@ -2,8 +2,6 @@ package com.alliky.core.util;
 
 import androidx.annotation.RawRes;
 
-import com.blankj.utilcode.util.Utils;
-
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
@@ -22,10 +20,10 @@ import java.util.List;
  * @Author: wxianing
  * @CreateDate: 2019/9/29 18:15
  */
-public class ResourceUtils {
+public class ResourceUtil {
     private static final int BUFFER_SIZE = 8192;
 
-    private ResourceUtils() {
+    private ResourceUtil() {
         throw new UnsupportedOperationException("u can't instantiate me...");
     }
 

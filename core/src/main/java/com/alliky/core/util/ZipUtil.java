@@ -23,10 +23,10 @@ import java.util.zip.ZipOutputStream;
  * @Author: wxianing
  * @CreateDate: 2019/9/29 18:08
  */
-public class ZipUtils {
+public class ZipUtil {
     private static final int BUFFER_LEN = 8192;
 
-    private ZipUtils() {
+    private ZipUtil() {
         throw new UnsupportedOperationException("u can't instantiate me...");
     }
 
@@ -291,7 +291,7 @@ public class ZipUtils {
                     ZipEntry entry = ((ZipEntry) entries.nextElement());
                     String entryName = entry.getName();
                     if (entryName.contains("../")) {
-                        Log.e("ZipUtils", "it's dangerous!");
+                        Log.e("ZipUtil", "it's dangerous!");
                         return files;
                     }
                     if (!unzipChildFile(destDir, files, zip, entry)) return files;
@@ -301,7 +301,7 @@ public class ZipUtils {
                     ZipEntry entry = ((ZipEntry) entries.nextElement());
                     String entryName = entry.getName();
                     if (entryName.contains("../")) {
-                        Log.e("ZipUtils", "it's dangerous!");
+                        Log.e("ZipUtil", "it's dangerous!");
                         return files;
                     }
                     if (entryName.contains(keyword)) {

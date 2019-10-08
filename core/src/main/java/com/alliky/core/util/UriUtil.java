@@ -10,8 +10,6 @@ import android.provider.MediaStore;
 import androidx.annotation.NonNull;
 import androidx.core.content.FileProvider;
 
-import com.blankj.utilcode.util.Utils;
-
 import java.io.File;
 
 /**
@@ -19,8 +17,8 @@ import java.io.File;
  * @Author: wxianing
  * @CreateDate: 2019/9/29 18:09
  */
-public class UriUtils {
-    private UriUtils() {
+public class UriUtil {
+    private UriUtil() {
         throw new UnsupportedOperationException("u can't instantiate me...");
     }
 

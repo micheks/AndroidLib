@@ -13,9 +13,6 @@ import android.util.Log;
 
 import androidx.annotation.RequiresPermission;
 
-import com.blankj.utilcode.util.ShellUtils;
-import com.blankj.utilcode.util.Utils;
-
 import java.lang.reflect.Method;
 import java.net.InetAddress;
 import java.net.InterfaceAddress;
@@ -38,9 +35,9 @@ import static android.content.Context.WIFI_SERVICE;
  * @Author: wxianing
  * @CreateDate: 2019/9/29 18:19
  */
-public class NetworkUtils {
+public class NetworkUtil {
 
-    private NetworkUtils() {
+    private NetworkUtil() {
         throw new UnsupportedOperationException("u can't instantiate me...");
     }
 
@@ -101,13 +98,13 @@ public class NetworkUtils {
         if (ip == null || ip.length() <= 0) {
             ip = "223.5.5.5";// default ping ip
         }
-        ShellUtils.CommandResult result = ShellUtils.execCmd(String.format("ping -c 1 %s", ip), false);
+        ShellUtil.CommandResult result = ShellUtil.execCmd(String.format("ping -c 1 %s", ip), false);
         boolean ret = result.result == 0;
         if (result.errorMsg != null) {
-            Log.d("NetworkUtils", "isAvailableByPing() called" + result.errorMsg);
+            Log.d("NetworkUtil", "isAvailableByPing() called" + result.errorMsg);
         }
         if (result.successMsg != null) {
-            Log.d("NetworkUtils", "isAvailableByPing() called" + result.successMsg);
+            Log.d("NetworkUtil", "isAvailableByPing() called" + result.successMsg);
         }
         return ret;
     }
@@ -278,25 +275,16 @@ public class NetworkUtils {
      * {@code <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />}</p>
      *
      * @return type of network
-     * <ul>
-     * <li>{@link com.blankj.utilcode.util.NetworkUtils.NetworkType#NETWORK_ETHERNET} </li>
-     * <li>{@link com.blankj.utilcode.util.NetworkUtils.NetworkType#NETWORK_WIFI    } </li>
-     * <li>{@link com.blankj.utilcode.util.NetworkUtils.NetworkType#NETWORK_4G      } </li>
-     * <li>{@link com.blankj.utilcode.util.NetworkUtils.NetworkType#NETWORK_3G      } </li>
-     * <li>{@link com.blankj.utilcode.util.NetworkUtils.NetworkType#NETWORK_2G      } </li>
-     * <li>{@link com.blankj.utilcode.util.NetworkUtils.NetworkType#NETWORK_UNKNOWN } </li>
-     * <li>{@link com.blankj.utilcode.util.NetworkUtils.NetworkType#NETWORK_NO      } </li>
-     * </ul>
      */
     @RequiresPermission(ACCESS_NETWORK_STATE)
-    public static com.blankj.utilcode.util.NetworkUtils.NetworkType getNetworkType() {
-        com.blankj.utilcode.util.NetworkUtils.NetworkType netType = com.blankj.utilcode.util.NetworkUtils.NetworkType.NETWORK_NO;
+    public static NetworkType getNetworkType() {
+        NetworkType netType = NetworkType.NETWORK_NO;
         NetworkInfo info = getActiveNetworkInfo();
         if (info != null && info.isAvailable()) {
             if (info.getType() == ConnectivityManager.TYPE_ETHERNET) {
-                netType = com.blankj.utilcode.util.NetworkUtils.NetworkType.NETWORK_ETHERNET;
+                netType = NetworkType.NETWORK_ETHERNET;
             } else if (info.getType() == ConnectivityManager.TYPE_WIFI) {
-                netType = com.blankj.utilcode.util.NetworkUtils.NetworkType.NETWORK_WIFI;
+                netType = NetworkType.NETWORK_WIFI;
             } else if (info.getType() == ConnectivityManager.TYPE_MOBILE) {
                 switch (info.getSubtype()) {
 
@@ -306,7 +294,7 @@ public class NetworkUtils {
                     case TelephonyManager.NETWORK_TYPE_EDGE:
                     case TelephonyManager.NETWORK_TYPE_1xRTT:
                     case TelephonyManager.NETWORK_TYPE_IDEN:
-                        netType = com.blankj.utilcode.util.NetworkUtils.NetworkType.NETWORK_2G;
+                        netType = NetworkType.NETWORK_2G;
                         break;
 
                     case TelephonyManager.NETWORK_TYPE_TD_SCDMA:
@@ -319,12 +307,12 @@ public class NetworkUtils {
                     case TelephonyManager.NETWORK_TYPE_EVDO_B:
                     case TelephonyManager.NETWORK_TYPE_EHRPD:
                     case TelephonyManager.NETWORK_TYPE_HSPAP:
-                        netType = com.blankj.utilcode.util.NetworkUtils.NetworkType.NETWORK_3G;
+                        netType = NetworkType.NETWORK_3G;
                         break;
 
                     case TelephonyManager.NETWORK_TYPE_IWLAN:
                     case TelephonyManager.NETWORK_TYPE_LTE:
-                        netType = com.blankj.utilcode.util.NetworkUtils.NetworkType.NETWORK_4G;
+                        netType = NetworkType.NETWORK_4G;
                         break;
                     default:
 
@@ -332,14 +320,14 @@ public class NetworkUtils {
                         if (subtypeName.equalsIgnoreCase("TD-SCDMA")
                                 || subtypeName.equalsIgnoreCase("WCDMA")
                                 || subtypeName.equalsIgnoreCase("CDMA2000")) {
-                            netType = com.blankj.utilcode.util.NetworkUtils.NetworkType.NETWORK_3G;
+                            netType = NetworkType.NETWORK_3G;
                         } else {
-                            netType = com.blankj.utilcode.util.NetworkUtils.NetworkType.NETWORK_UNKNOWN;
+                            netType = NetworkType.NETWORK_UNKNOWN;
                         }
                         break;
                 }
             } else {
-                netType = com.blankj.utilcode.util.NetworkUtils.NetworkType.NETWORK_UNKNOWN;
+                netType = NetworkType.NETWORK_UNKNOWN;
             }
         }
         return netType;

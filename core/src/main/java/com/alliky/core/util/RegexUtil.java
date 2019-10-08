@@ -2,7 +2,8 @@ package com.alliky.core.util;
 
 import androidx.collection.SimpleArrayMap;
 
-import com.blankj.utilcode.constant.RegexConstants;
+
+import com.alliky.core.constant.RegexConstants;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,11 +16,11 @@ import java.util.regex.Pattern;
  * @Author: wxianing
  * @CreateDate: 2019/9/29 18:16
  */
-public class RegexUtils {
+public class RegexUtil {
 
     private final static SimpleArrayMap<String, String> CITY_MAP = new SimpleArrayMap<>();
 
-    private RegexUtils() {
+    private RegexUtil() {
         throw new UnsupportedOperationException("u can't instantiate me...");
     }
 
