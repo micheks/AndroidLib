@@ -16,3 +16,20 @@ dependencies {
     implementation 'com.github.wxianing:AndroidLib:v1.1'
 }
 ```
+
+### 代码具体调用说明
+ 1.在Application中初始化配置 
+ public class MyApplication extends BaseApplication {
+        
+            @Override
+            public void onCreate() {
+                super.onCreate();
+                //初始化常用配置
+                Kylin.init(this)
+                        .withLoaderDelayed(500)
+                        .withApiHost("http://192.168.2.9:88/")
+                        .withInterceptor(new DebugInterceptor("test", R.raw.test))
+                        .configure();
+            }
+        }
+
