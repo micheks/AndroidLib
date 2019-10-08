@@ -8,7 +8,7 @@ import com.alliky.core.net.callback.IFailure;
 import com.alliky.core.net.callback.ILoading;
 import com.alliky.core.net.callback.IRequest;
 import com.alliky.core.net.callback.ISuccess;
-import com.blankj.utilcode.util.StringUtils;
+import com.alliky.core.util.StringUtils;
 
 import java.util.WeakHashMap;
 
@@ -55,7 +55,7 @@ public final class DownloadHandler {
     }
 
     public final void handleDownload() {
-        
+
         if (REQUEST != null) {
             REQUEST.onRequestStart();
         }
@@ -97,7 +97,7 @@ public final class DownloadHandler {
                     @Override
                     public void onFailure(Call<ResponseBody> call, Throwable t) {
                         if (FAILURE != null) {
-                            FAILURE.onFailure( t);
+                            FAILURE.onFailure(t);
                             HttpCreator.getParams().clear();
                         }
                     }
