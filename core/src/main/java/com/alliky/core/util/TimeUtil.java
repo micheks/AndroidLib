@@ -18,6 +18,7 @@ import java.util.Locale;
  * @CreateDate: 2019/9/29 18:05
  */
 public class TimeUtil {
+
     private static final ThreadLocal<SimpleDateFormat> SDF_THREAD_LOCAL = new ThreadLocal<>();
 
     private static SimpleDateFormat getDefaultFormat() {
