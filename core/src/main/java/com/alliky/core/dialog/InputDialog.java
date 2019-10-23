@@ -33,11 +33,9 @@ import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;
 
 /**
- * Author: @Kongzue
- * Github: https://github.com/kongzue/
- * Homepage: http://kongzue.com/
- * Mail: myzcxhh@live.cn
- * CreateTime: 2019/4/12 16:42
+ * @Description: DOTO
+ * @Author: wxianing
+ * @CreateDate: 2019/10/8 14:47
  */
 public class InputDialog extends MessageDialog {
     

@@ -6,11 +6,9 @@ import android.view.WindowManager;
 import android.widget.RelativeLayout;
 
 /**
- * @author: Kongzue
- * @github: https://github.com/kongzue/
- * @homepage: http://kongzue.com/
- * @mail: myzcxhh@live.cn
- * @createTime: 2019/9/24 17:34
+ * @Description: DOTO
+ * @Author: wxianing
+ * @CreateDate: 2019/10/8 14:47
  */
 public class MaxHeightLayout extends RelativeLayout {
     

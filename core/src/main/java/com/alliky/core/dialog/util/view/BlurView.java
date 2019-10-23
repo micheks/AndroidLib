@@ -25,7 +25,11 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 
 import com.alliky.core.R;
-
+/**
+ * @Description: DOTO
+ * @Author: wxianing
+ * @CreateDate: 2019/10/8 14:47
+ */
 public class BlurView extends View {
     private float mDownsampleFactor; // default 4
     private int mOverlayColor; // default #aaffffff

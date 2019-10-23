@@ -9,11 +9,9 @@ import android.widget.LinearLayout;
 import androidx.annotation.Nullable;
 
 /**
- * Author: @Kongzue
- * Github: https://github.com/kongzue/
- * Homepage: http://kongzue.com/
- * Mail: myzcxhh@live.cn
- * CreateTime: 2019/5/11 18:10
+ * @Description: DOTO
+ * @Author: wxianing
+ * @CreateDate: 2019/10/8 14:47
  */
 public class MaterialTouchView extends LinearLayout {
     public MaterialTouchView(Context context) {

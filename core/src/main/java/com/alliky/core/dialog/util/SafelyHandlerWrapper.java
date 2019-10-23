@@ -4,9 +4,9 @@ import android.os.Handler;
 import android.os.Message;
 
 /**
- * @Date: 2018/11/16
- * @Author: heweizong
- * @Description:
+ * @Description: DOTO
+ * @Author: wxianing
+ * @CreateDate: 2019/10/8 14:47
  */
 public class SafelyHandlerWrapper extends Handler {
     private Handler impl;

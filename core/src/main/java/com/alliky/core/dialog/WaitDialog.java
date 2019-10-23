@@ -3,11 +3,9 @@ package com.alliky.core.dialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 /**
- * Author: @Kongzue
- * Github: https://github.com/kongzue/
- * Homepage: http://kongzue.com/
- * Mail: myzcxhh@live.cn
- * CreateTime: 2019/4/9 14:08
+ * @Description: DOTO
+ * @Author: wxianing
+ * @CreateDate: 2019/10/8 14:47
  */
 public class WaitDialog extends TipDialog {
     

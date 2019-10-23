@@ -8,6 +8,11 @@ import android.util.AttributeSet;
 
 import androidx.appcompat.widget.AppCompatImageView;
 
+/**
+ * @Description: DOTO
+ * @Author: wxianing
+ * @CreateDate: 2019/10/8 14:47
+ */
 public class IOSItemImageView extends AppCompatImageView {
     
     public IOSItemImageView(Context context, AttributeSet attrs) {

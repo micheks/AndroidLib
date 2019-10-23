@@ -41,11 +41,9 @@ import static android.content.DialogInterface.BUTTON_POSITIVE;
 import static com.alliky.core.dialog.util.DialogSettings.blurAlpha;
 
 /**
- * Author: @Kongzue
- * Github: https://github.com/kongzue/
- * Homepage: http://kongzue.com/
- * Mail: myzcxhh@live.cn
- * CreateTime: 2019/3/29 16:43
+ * @Description: DOTO
+ * @Author: wxianing
+ * @CreateDate: 2019/10/8 14:47
  */
 public class MessageDialog extends BaseDialog {
 

@@ -93,7 +93,7 @@ import com.alliky.core.util.StatusBarUtils;
  * <attr name="centerCustomView" format="reference" /> <!-- 中间自定义布局, 对应centerType_CustomView -->
  * </declare-styleable>
  * <p/>
- * Created by wuhenzhizao on 16/1/12.
+ *
  */
 @SuppressWarnings("ResourceType")
 public class TitleBar extends RelativeLayout implements View.OnClickListener {

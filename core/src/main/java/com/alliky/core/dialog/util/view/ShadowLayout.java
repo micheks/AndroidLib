@@ -15,8 +15,9 @@ import android.widget.FrameLayout;
 import com.alliky.core.R;
 
 /**
- * Author: @dmytrodanylyk
- * Github: https://github.com/dmytrodanylyk/shadow-layout
+ * @Description: DOTO
+ * @Author: wxianing
+ * @CreateDate: 2019/10/8 14:47
  */
 public class ShadowLayout extends FrameLayout {
     

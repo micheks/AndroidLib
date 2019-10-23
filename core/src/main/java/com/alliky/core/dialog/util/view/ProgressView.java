@@ -27,13 +27,11 @@ import androidx.annotation.NonNull;
 
 import com.alliky.core.R;
 
-/*
-*
-*   CircularProgressView
-*   @Github: https://github.com/Runly/CircularProgressView
-*   @Author: Runly(https://github.com/Runly/CircularProgressView/commits?author=Runly)
-*
-* */
+/**
+ * @Description: DOTO
+ * @Author: wxianing
+ * @CreateDate: 2019/10/8 14:47
+ */
 public class ProgressView extends View {
     public static final int MODE_DETERMINATE = 0;
     public static final int MODE_INDETERMINATE = 1;

@@ -33,11 +33,9 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 /**
- * Author: @Kongzue
- * Github: https://github.com/kongzue/
- * Homepage: http://kongzue.com/
- * Mail: myzcxhh@live.cn
- * CreateTime: 2019/4/10 18:32
+ * @Description: DOTO
+ * @Author: wxianing
+ * @CreateDate: 2019/10/8 14:47
  */
 public class Notification {
     

@@ -9,11 +9,9 @@ import android.util.Log;
 import com.alliky.core.dialog.interfaces.DialogLifeCycleListener;
 
 /**
- * Author: @Kongzue
- * Github: https://github.com/kongzue/
- * Homepage: http://kongzue.com/
- * Mail: myzcxhh@live.cn
- * CreateTime: 2019/3/22 16:03
+ * @Description: DOTO
+ * @Author: wxianing
+ * @CreateDate: 2019/10/8 14:47
  */
 public class DialogSettings {
     

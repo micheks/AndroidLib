@@ -11,11 +11,9 @@ import androidx.annotation.Nullable;
 import com.alliky.core.dialog.interfaces.OnNotificationClickListener;
 
 /**
- * Author: @Kongzue
- * Github: https://github.com/kongzue/
- * Homepage: http://kongzue.com/
- * Mail: myzcxhh@live.cn
- * CreateTime: 2019/4/10 23:02
+ * @Description: DOTO
+ * @Author: wxianing
+ * @CreateDate: 2019/10/8 14:47
  */
 public class NotifyToastShadowView extends RelativeLayout {
     

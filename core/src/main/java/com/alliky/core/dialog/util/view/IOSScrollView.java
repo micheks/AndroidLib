@@ -9,11 +9,9 @@ import android.view.animation.TranslateAnimation;
 import android.widget.HorizontalScrollView;
 
 /**
- * Author: @Kongzue
- * Github: https://github.com/kongzue/
- * Homepage: http://kongzue.com/
- * Mail: myzcxhh@live.cn
- * CreateTime: 2019/5/11 02:30
+ * @Description: DOTO
+ * @Author: wxianing
+ * @CreateDate: 2019/10/8 14:47
  */
 public class IOSScrollView extends HorizontalScrollView {
     
