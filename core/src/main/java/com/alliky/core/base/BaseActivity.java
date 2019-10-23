@@ -38,6 +38,10 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         //设置屏幕不进入睡眠
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        //去掉toolbar
+        if (getSupportActionBar()!=null){
+            getSupportActionBar().hide();
+        }
         super.onCreate(savedInstanceState);
 
         if (!EventBus.getDefault().isRegistered(this)) {

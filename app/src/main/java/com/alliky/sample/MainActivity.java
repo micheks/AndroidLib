@@ -1,26 +1,20 @@
 package com.alliky.sample;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.widget.TextView;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 
 import com.alliky.core.base.BaseActivity;
-import com.alliky.core.net.HttpClient;
-import com.alliky.core.net.callback.IError;
-import com.alliky.core.net.callback.IFailure;
-import com.alliky.core.net.callback.ISuccess;
-import com.alliky.core.util.PhotoUtils;
+import com.alliky.core.widget.CommonTitleBar;
 import com.alliky.sample.contract.MainContract;
 import com.alliky.sample.presenter.MainPresenter;
 
-import java.io.File;
-
 public class MainActivity extends BaseActivity<MainPresenter> implements MainContract.View {
 
-    TextView mTextView;
+    private CommonTitleBar mTitleBar;
+
+
 
     @Override
     public Object setLayout() {
@@ -29,17 +23,16 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
 
     @Override
     public void onInitView(@Nullable Bundle savedInstanceState) {
-
         mPresenter = new MainPresenter(this);
         mPresenter.attachView(this);
 
-        mTextView = (TextView) findViewById(R.id.textView);
-
-        //拍照或者相册选择回调
-        PhotoUtils.getInstance().init(this, false, new PhotoUtils.OnSelectListener() {
+        mTitleBar = (CommonTitleBar) findViewById(R.id.title_bar);
+        mTitleBar.setListener(new CommonTitleBar.OnTitleBarListener() {
             @Override
-            public void onFinish(File outputFile, Uri outputUri) {
-                //TODO
+            public void onClicked(View v, int action, String extra) {
+                if (action==CommonTitleBar.ACTION_LEFT_TEXT){
+                    onBackPressed();
+                }
             }
         });
     }
@@ -50,12 +43,6 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-    }
-
-    @Override
     public void getVehicleListResult(String response) {
-        mTextView.setText(response);
     }
 }

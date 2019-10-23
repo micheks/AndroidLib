@@ -137,7 +137,7 @@ public class PhotoUtils {
     /**
      * 从图库获取gallery
      */
-    public void 从图库获取gallery() {
+    public void gallery() {
         Intent intent = new Intent(Intent.ACTION_PICK, null);
         intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
         mActivity.startActivityForResult(intent, SELECT_PHOTO);
