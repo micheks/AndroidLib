@@ -1,15 +1,15 @@
 # AndroidLib
 Android 一个基本类库，里面封装了一些常用工具，网络框架等。
 
-### 如何使用？
+## 如何使用？
 
-#### 步骤一：在项目build.gradle加上
+### 步骤一：在项目build.gradle加上
 ```
 repositories {
     maven { url 'https://jitpack.io' }
 }
 ```
-#### 步骤二：在moduble的build.gradle加上
+### 步骤二：在moduble的build.gradle加上
 
 ```
 dependencies {
@@ -17,9 +17,9 @@ dependencies {
 }
 ```
 
-### 代码具体调用说明
+## 代码具体调用说明
 
-#### 一、要使用该框架，则必须先在Application中初始化配置，否则使用到配置APP会闪退，配置代码如下： 
+### 一、要使用该框架，则必须先在Application中初始化配置，否则使用到配置APP会闪退，配置代码如下： 
 
 ``` 
 public class MyApplication extends BaseApplication {
@@ -38,9 +38,9 @@ public class MyApplication extends BaseApplication {
 
 ``` 
 
-#### 二、网络请求使用
+### 二、网络请求使用
 
-##### 1.post请求方式使用
+#### 1.post请求方式使用
 
 ``` 
 HttpClient.builder()
@@ -71,7 +71,7 @@ HttpClient.builder()
                 
 ``` 
 
-##### 2.get请求方式使用
+#### 2.get请求方式使用
 
 ``` 
 HttpClient.builder()
@@ -102,7 +102,7 @@ HttpClient.builder()
                 
 ``` 
 
-##### 3.文件上传
+#### 3.文件上传
 
 ``` 
 HttpClient.builder()
@@ -134,7 +134,7 @@ HttpClient.builder()
 
 ``` 
 
-##### 4.下载文件
+#### 4.下载文件
 
 ``` 
 HttpClient.builder()
@@ -167,9 +167,9 @@ HttpClient.builder()
                 
 ``` 
 
-#### 三、打开相机或者从相册中选择照片
+### 三、打开相机或者从相册中选择照片
 
-##### 1.在onCreate方法中初始化PhotoUtil
+#### 1.在onCreate方法中初始化PhotoUtil
 
 ``` 
 //拍照货相册选择回调
@@ -182,7 +182,7 @@ PhotoUtils.getInstance().init(this, false, new PhotoUtil.OnSelectListener() {
 
 ``` 
 
-##### 2.在onActivityResult 调用  PhotoUtils.getInstance().bindForResult(requestCode, resultCode, data);
+#### 2.在onActivityResult 调用  PhotoUtils.getInstance().bindForResult(requestCode, resultCode, data);
 
 ``` 
 @Override
@@ -192,15 +192,15 @@ protected void onActivityResult(int requestCode, int resultCode, @Nullable Inten
 }
 ``` 
 
-##### 3.相机调用
+#### 3.相机调用
 ``` 
  PhotoUtils.getInstance().camera();
 ``` 
-##### 4.打开相册
+#### 4.打开相册
 ``` 
  PhotoUtils.getInstance().gallery();
 ``` 
-##### 5.图片裁剪
+#### 5.图片裁剪
 ``` 
   /**
      * @param activity    当前activity
@@ -210,8 +210,8 @@ protected void onActivityResult(int requestCode, int resultCode, @Nullable Inten
      */
  PhotoUtils.getInstance().cropImageUri(Activity activity, Uri orgUri, Uri desUri, int requestCode);
 ``` 
-#### 三、标题栏
-##### 1.布局中引入控件
+### 三、标题栏
+#### 1.布局中引入控件
 ``` 
 <com.alliky.core.widget.TitleBar
     xmlns:titlebar="http://schemas.android.com/apk/res-auto"
@@ -253,8 +253,8 @@ protected void onActivityResult(int requestCode, int resultCode, @Nullable Inten
     titlebar:centerSearchBg="reference"        // 搜索框背景
     titlebar:centerCustomView="reference"/>    // 中间自定义视图
 ``` 
-##### 2.监听标题栏操作
-###### (1)点击事件
+#### 2.监听标题栏操作
+##### (1)点击事件
 ``` 
 titleBar.setListener(new CommonTitleBar.OnTitleBarListener() {
     @Override
@@ -274,7 +274,7 @@ titleBar.setListener(new CommonTitleBar.OnTitleBarListener() {
     }
 });
 ``` 
-###### (2)双击事件
+##### (2)双击事件
 ```
 titleBar.setDoubleClickListener(new CommonTitleBar.OnTitleBarDoubleClickListener() {
     @Override
@@ -283,7 +283,7 @@ titleBar.setDoubleClickListener(new CommonTitleBar.OnTitleBarDoubleClickListener
     }
 });
 ```
-###### (3)自定义布局事件(以右侧自定义布局为例)
+##### (3)自定义布局事件(以右侧自定义布局为例)
 ```
 View rightCustomLayout = titleBar.getRightCustomView();
 rightCustomLayout.setOnClickListener(new View.OnClickListener() {
@@ -300,12 +300,12 @@ rightCustomLayout.findViewById(R.id.子控件ID).setOnClickListener(new View.OnC
     }
 });
 ```
-##### 3.动态切换状态栏图标颜色
+#### 3.动态切换状态栏图标颜色
 ```
 titleBar.toggleStatusBarMode();
 ```  
-##### 4.注意点
-###### (1). 如果出现全屏与键盘的冲突导致的键盘被遮挡问题，请在Activity.onAttachedToWindow()方法中加入如下代码，或在布局根节点加入 fitSystemWindow=true
+#### 4.注意点
+##### (1). 如果出现全屏与键盘的冲突导致的键盘被遮挡问题，请在Activity.onAttachedToWindow()方法中加入如下代码，或在布局根节点加入 fitSystemWindow=true
 ```
   @Override
   public void onAttachedToWindow() {
@@ -313,9 +313,9 @@ titleBar.toggleStatusBarMode();
       KeyboardConflictCompat.assistWindow(getWindow());
   }
 ```  
-###### (2). 若出现页面其他输入组件无法自动获取焦点的情况，请修改配置titlebar:centerTextMarquee="false"  
+##### (2). 若出现页面其他输入组件无法自动获取焦点的情况，请修改配置titlebar:centerTextMarquee="false"  
 
-####  四、自定义PopupWindow 的使用
+###  四、自定义PopupWindow 的使用
  ```  
  mPopupWindow = new CustomPopupWindow.Builder(this)
                      .setContentView(R.layout.pop_item_photo_layout)//设置布局
@@ -343,9 +343,9 @@ titleBar.toggleStatusBarMode();
  
 ```
 
-#### 五、自定义弹窗CustomDialog
+### 五、自定义弹窗CustomDialog
 
-##### 全局配置
+#### 1.全局配置
 在完成引入库后，首先需要进行一些预先配置，诸如对话框组件整体的风格、主题和字体等，它们都可以在一个工具类中进行配置，说明如下：
 ```
 import com.kongzue.dialog.util.DialogSettings;
@@ -390,13 +390,12 @@ android {
     }
 }
 ```
-##### 使用
+#### 2.Dialog使用
 
-###### 1.基本消息对话框
+##### (1).基本消息对话框
 
 提供日常消息展示，区分为单按钮、双按钮和三按钮的效果。
 
-![Kongzue Dialog V3 消息对话框](https://github.com/kongzue/Res/raw/master/app/src/main/res/mipmap-xxxhdpi/img_dialog_v3_messagedialog.png)
 
 以下范例通过参数快速创建一个基本的消息对话框：
 ```
@@ -449,7 +448,7 @@ MessageDialog
         .setButtonOrientation(LinearLayout.VERTICAL);
 ```
 
-💡 额外说明，V3 库支持更灵活的配置按钮方式，除了默认的 setOnOkButtonClickListener(...) 方法以外，你还可以这样写：
+💡 额外说明，除了默认的 setOnOkButtonClickListener(...) 方法以外，你还可以这样写：
 ```
 //仅设置文字
 .setOkButton("知道了")
@@ -478,10 +477,9 @@ MessageDialog
 //其他你能想到的同样支持...
 ```
 
-### 输入对话框
-提供额外输入需求的对话框组件，可控制输入内容类型，并在点击按钮时判断是否关闭对话框。
+##### (2).输入对话框
 
-![Kongzue Dialog V3 输入对话框](https://github.com/kongzue/Res/raw/master/app/src/main/res/mipmap-xxxhdpi/img_dialog_v3_input.png)
+提供额外输入需求的对话框组件，可控制输入内容类型，并在点击按钮时判断是否关闭对话框。
 
 以下范例通过参数快速创建一个基本的输入对话框：
 ```
@@ -526,10 +524,8 @@ InputDialog.show(MainActivity.this, "输入对话框", "请输入6位密码", "�
 
 备注：TextInfo（com.kongzue.dialog.util.TextInfo）类提供了基本的文字样式控制，InputInfo（com.kongzue.dialog.util.InputInfo）类提供了基础的输入文字类型控制。
 
-### 等待和提示对话框
+##### (3).等待和提示对话框
 等待提示对话框提供居中于屏幕阻断操作的等待和状态提示功能。
-
-![Kongzue Dialog V3 等待和提示对话框](https://github.com/kongzue/Res/raw/master/app/src/main/res/mipmap-xxxhdpi/img_dialog_v3_tip.png)
 
 使用以下代码构建等待对话框：
 ```
@@ -571,10 +567,8 @@ WaitDialog.show(MainActivity.this, null)
         .setTheme(DialogSettings.THEME.LIGHT);      //强制指定为亮色模式
 ```
 
-### 底部菜单
+##### (4).底部菜单
 即从屏幕底部弹出的可选择的菜单。
-
-![Kongzue Dialog V3 底部菜单](https://github.com/kongzue/Res/raw/master/app/src/main/res/mipmap-xxxhdpi/img_dialog_v3_bottomdialog.png)
 
 使用以下代码构建底部菜单：
 ```
@@ -626,12 +620,11 @@ BottomMenu.show(MainActivity.this, baseAdapter, new OnMenuItemClickListener() {
 
 Material 风格的 BottomDialog 默认不支持“取消”按钮，按照设计规范，使用下滑手势关闭。
 
-### 通知
+##### (5).通知
 这里的通知并非系统通知，且不具备在您的设备通知栏中持久显示的特性，它本质上是通过对 Toast 进行修改实现的跨界面屏幕顶部提示条。
 
 不依赖于界面显示，也不会打断用户操作，可作为即时通迅 IM 类软件跨界面消息提醒，或者用于网络错误状态提示。
 
-![Kongzue Dialog V3 通知](https://github.com/kongzue/Res/raw/master/app/src/main/res/mipmap-xxxhdpi/img_dialog_v3_notify.png)
 
 使用以下代码快速构建通知：
 ```
@@ -653,10 +646,8 @@ Notification.show(MainActivity.this, "提示", "提示信息", R.mipmap.ico_wech
 });
 ```
 
-### 分享对话框
+##### (6).分享对话框
 分享对话框会从屏幕底部弹出，并提供图标加文字的选择分享列表。
-
-![Kongzue Dialog V3 通知](https://github.com/kongzue/Res/raw/master/app/src/main/res/mipmap-xxxhdpi/img_dialog_v3_share.png)
 
 要使用分享对话框，需要先创建分享 Item：
 ```
@@ -686,9 +677,9 @@ ShareDialog.show(MainActivity.this, itemList, new ShareDialog.OnItemClickListene
 
 Material 风格的 ShareDialog 默认不支持“取消”按钮，按照设计规范，使用下滑手势关闭。
 
-## 定制化
+#### 3.定制化
 
-### 自定义布局
+##### (1).自定义布局
 对于任意一个对话框组件，Kongzue Dialog V3 提供了自定义布局功能，您可以使用一下代码来插入自定义布局：
 ```
 //对于未实例化的布局：
@@ -714,7 +705,7 @@ MessageDialog.show(MainActivity.this, "提示", "这个窗口附带自定义布�
 
 目前支持自定义子布局的有：消息对话框组件（MessageDialog）、底部菜单组件（BottomDialog）、输入框组件（InputDialog）、分享对话框（ShareDialog）和通知组件（Notification）
 
-### 自定义对话框
+##### (2).自定义对话框
 提供了完全自定义对话框方便快速实现特殊效果的对话框样式。
 
 
@@ -762,51 +753,8 @@ CustomDialog.setAlign(CustomDialog.ALIGN.BOTTOM)        //从屏幕底端出现
 CustomDialog.setAlign(CustomDialog.ALIGN.TOP)           //从屏幕顶端出现
 CustomDialog.setAlign(CustomDialog.ALIGN.DEFAULT)       //从屏幕中部出现
 ```
-## 其他设置
 
-### 文字样式
-因文字样式牵扯的属性较多，因此提供了封装类 `TextInfo（com.kongzue.dialog.util.TextInfo）`来进行。
-
-该类提供了以下属性进行设置：
-
-| 属性 | 用途 | 默认值 |
-| ------ | ------ | ------ |
-| fontSize | 文字大小(单位：dp) | 值为-1时不生效 |
-| gravity | 对齐方式 | Gravity.Left，值为-1时不生效 |
-| fontColor | 文字颜色 | 值为1时不生效 |
-| bold | 是否粗体 | - |
-
-以上属性可通过对应的 get、set方法设置或获取
-
-您可以直接进行 <a href="#全局配置">全局设置</a> 也可以单独对某个组件的标题、内容、按钮等进行设置：
-```
-MessageDialog.show(MainActivity.this, "提示", "这个窗口附带自定义布局", "知道了")
-    .setTitleTextInfo(new TextInfo().setBold(true).setFontColor(Color.RED))     //设置标题文字样式
-;
-```
-
-### 输入内容设置
-对于输入对话框 InputDialog，提供额外的 `InputInfo（com.kongzue.dialog.util.InputInfo）` 工具类控制输入内容的属性，其中各属性介绍如下：
-
-| 属性 | 用途 | 默认值 |
-| ------ | ------ | ------ |
-| MAX_LENGTH | 可输入最大长度 | 值为-1时不生效 |
-| inputType | 输入类型 | 类型详见 android.text.InputType |
-| textInfo | 文字样式 | null时不生效 |
-
-您可以直接进行 <a href="#全局配置">全局设置</a> 也可以单独对某个输入对话框进行设置：
-```
-InputDialog.show(MainActivity.this, "提示", "请输入密码（123456）", "确定", "取消")
-    .setInputInfo(new InputInfo()       //设置输入样式
-        .setMAX_LENGTH(6)
-        .setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD)
-        .setTextInfo(new TextInfo()
-                             .setFontColor(Color.RED)
-        )
-;
-```
-
-### 监听事件
+#### 4.监听事件
 如果需要全局的控制所有对话框显示、隐藏触发事件，可以设置 <a href="#全局配置">全局设置</a> 中的 dialogLifeCycleListener 监听器，其中会返回所有对话框的生命周期管理，以便做相应处理：
 ```
 DialogSettings.dialogLifeCycleListener = new DialogLifeCycleListener() {
@@ -835,7 +783,7 @@ TipDialog.show(MainActivity.this, "成功！", TipDialog.TYPE.SUCCESS).setOnDism
 });
 ```
 
-### 自定义背景
+#### 5.自定义背景
 目前 MessageDialog、InpurDialog、TipDialog、WaitDialog 支持使用以下方法自定义背景资源：
 ```
 dialog.setBackgroundResId(int resId);
