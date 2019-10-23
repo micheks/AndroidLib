@@ -96,7 +96,7 @@ import com.alliky.core.util.StatusBarUtils;
  * Created by wuhenzhizao on 16/1/12.
  */
 @SuppressWarnings("ResourceType")
-public class CommonTitleBar extends RelativeLayout implements View.OnClickListener {
+public class TitleBar extends RelativeLayout implements View.OnClickListener {
     private View viewStatusBarFill;                     // 状态栏填充视图
     private View viewBottomLine;                        // 分隔线视图
     private View viewBottomShadow;                      // 底部阴影
@@ -179,7 +179,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
     private static final int TYPE_CENTER_SEARCH_RIGHT_VOICE = 0;
     private static final int TYPE_CENTER_SEARCH_RIGHT_DELETE = 1;
 
-    public CommonTitleBar(Context context, AttributeSet attrs) {
+    public TitleBar(Context context, AttributeSet attrs) {
         super(context, attrs);
         loadAttributes(context, attrs);
         initGlobalViews(context);
@@ -190,60 +190,60 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
         PADDING_5 = ScreenUtil.dp2PxInt(context, 5);
         PADDING_12 = ScreenUtil.dp2PxInt(context, 12);
 
-        TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.CommonTitleBar);
+        TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.TitleBar);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             // notice 未引入沉浸式标题栏之前,隐藏标题栏撑起布局
-            fillStatusBar = array.getBoolean(R.styleable.CommonTitleBar_fillStatusBar, true);
+            fillStatusBar = array.getBoolean(R.styleable.TitleBar_fillStatusBar, true);
         }
-        titleBarColor = array.getColor(R.styleable.CommonTitleBar_titleBarColor, Color.parseColor("#ffffff"));
-        titleBarHeight = (int) array.getDimension(R.styleable.CommonTitleBar_titleBarHeight, ScreenUtil.dp2PxInt(context, 44));
-        statusBarColor = array.getColor(R.styleable.CommonTitleBar_statusBarColor, Color.parseColor("#ffffff"));
-        statusBarMode = array.getInt(R.styleable.CommonTitleBar_statusBarMode, 0);
+        titleBarColor = array.getColor(R.styleable.TitleBar_titleBarColor, Color.parseColor("#ffffff"));
+        titleBarHeight = (int) array.getDimension(R.styleable.TitleBar_titleBarHeight, ScreenUtil.dp2PxInt(context, 44));
+        statusBarColor = array.getColor(R.styleable.TitleBar_statusBarColor, Color.parseColor("#ffffff"));
+        statusBarMode = array.getInt(R.styleable.TitleBar_statusBarMode, 0);
 
-        showBottomLine = array.getBoolean(R.styleable.CommonTitleBar_showBottomLine, true);
-        bottomLineColor = array.getColor(R.styleable.CommonTitleBar_bottomLineColor, Color.parseColor("#dddddd"));
-        bottomShadowHeight = array.getDimension(R.styleable.CommonTitleBar_bottomShadowHeight, ScreenUtil.dp2PxInt(context, 0));
+        showBottomLine = array.getBoolean(R.styleable.TitleBar_showBottomLine, true);
+        bottomLineColor = array.getColor(R.styleable.TitleBar_bottomLineColor, Color.parseColor("#dddddd"));
+        bottomShadowHeight = array.getDimension(R.styleable.TitleBar_bottomShadowHeight, ScreenUtil.dp2PxInt(context, 0));
 
-        leftType = array.getInt(R.styleable.CommonTitleBar_leftType, TYPE_LEFT_NONE);
+        leftType = array.getInt(R.styleable.TitleBar_leftType, TYPE_LEFT_NONE);
         if (leftType == TYPE_LEFT_TEXTVIEW) {
-            leftText = array.getString(R.styleable.CommonTitleBar_leftText);
-            leftTextColor = array.getColor(R.styleable.CommonTitleBar_leftTextColor, getResources().getColor(R.color.comm_titlebar_text_selector));
-            leftTextSize = array.getDimension(R.styleable.CommonTitleBar_leftTextSize, ScreenUtil.dp2PxInt(context, 16));
-            leftDrawable = array.getResourceId(R.styleable.CommonTitleBar_leftDrawable, 0);
-            leftDrawablePadding = array.getDimension(R.styleable.CommonTitleBar_leftDrawablePadding, 5);
+            leftText = array.getString(R.styleable.TitleBar_leftText);
+            leftTextColor = array.getColor(R.styleable.TitleBar_leftTextColor, getResources().getColor(R.color.titlebar_text_selector));
+            leftTextSize = array.getDimension(R.styleable.TitleBar_leftTextSize, ScreenUtil.dp2PxInt(context, 16));
+            leftDrawable = array.getResourceId(R.styleable.TitleBar_leftDrawable, 0);
+            leftDrawablePadding = array.getDimension(R.styleable.TitleBar_leftDrawablePadding, 5);
         } else if (leftType == TYPE_LEFT_IMAGEBUTTON) {
-            leftImageResource = array.getResourceId(R.styleable.CommonTitleBar_leftImageResource, R.drawable.comm_titlebar_reback_selector);
+            leftImageResource = array.getResourceId(R.styleable.TitleBar_leftImageResource, R.drawable.titlebar_reback_selector);
         } else if (leftType == TYPE_LEFT_CUSTOM_VIEW) {
-            leftCustomViewRes = array.getResourceId(R.styleable.CommonTitleBar_leftCustomView, 0);
+            leftCustomViewRes = array.getResourceId(R.styleable.TitleBar_leftCustomView, 0);
         }
 
-        rightType = array.getInt(R.styleable.CommonTitleBar_rightType, TYPE_RIGHT_NONE);
+        rightType = array.getInt(R.styleable.TitleBar_rightType, TYPE_RIGHT_NONE);
         if (rightType == TYPE_RIGHT_TEXTVIEW) {
-            rightText = array.getString(R.styleable.CommonTitleBar_rightText);
-            rightTextColor = array.getColor(R.styleable.CommonTitleBar_rightTextColor, getResources().getColor(R.color.comm_titlebar_text_selector));
-            rightTextSize = array.getDimension(R.styleable.CommonTitleBar_rightTextSize, ScreenUtil.dp2PxInt(context, 16));
+            rightText = array.getString(R.styleable.TitleBar_rightText);
+            rightTextColor = array.getColor(R.styleable.TitleBar_rightTextColor, getResources().getColor(R.color.titlebar_text_selector));
+            rightTextSize = array.getDimension(R.styleable.TitleBar_rightTextSize, ScreenUtil.dp2PxInt(context, 16));
         } else if (rightType == TYPE_RIGHT_IMAGEBUTTON) {
-            rightImageResource = array.getResourceId(R.styleable.CommonTitleBar_rightImageResource, 0);
+            rightImageResource = array.getResourceId(R.styleable.TitleBar_rightImageResource, 0);
         } else if (rightType == TYPE_RIGHT_CUSTOM_VIEW) {
-            rightCustomViewRes = array.getResourceId(R.styleable.CommonTitleBar_rightCustomView, 0);
+            rightCustomViewRes = array.getResourceId(R.styleable.TitleBar_rightCustomView, 0);
         }
 
-        centerType = array.getInt(R.styleable.CommonTitleBar_centerType, TYPE_CENTER_NONE);
+        centerType = array.getInt(R.styleable.TitleBar_centerType, TYPE_CENTER_NONE);
         if (centerType == TYPE_CENTER_TEXTVIEW) {
-            centerText = array.getString(R.styleable.CommonTitleBar_centerText);
-            centerTextColor = array.getColor(R.styleable.CommonTitleBar_centerTextColor, Color.parseColor("#333333"));
-            centerTextSize = array.getDimension(R.styleable.CommonTitleBar_centerTextSize, ScreenUtil.dp2PxInt(context, 18));
-            centerTextMarquee = array.getBoolean(R.styleable.CommonTitleBar_centerTextMarquee, true);
-            centerSubText = array.getString(R.styleable.CommonTitleBar_centerSubText);
-            centerSubTextColor = array.getColor(R.styleable.CommonTitleBar_centerSubTextColor, Color.parseColor("#666666"));
-            centerSubTextSize = array.getDimension(R.styleable.CommonTitleBar_centerSubTextSize, ScreenUtil.dp2PxInt(context, 11));
+            centerText = array.getString(R.styleable.TitleBar_centerText);
+            centerTextColor = array.getColor(R.styleable.TitleBar_centerTextColor, Color.parseColor("#333333"));
+            centerTextSize = array.getDimension(R.styleable.TitleBar_centerTextSize, ScreenUtil.dp2PxInt(context, 18));
+            centerTextMarquee = array.getBoolean(R.styleable.TitleBar_centerTextMarquee, true);
+            centerSubText = array.getString(R.styleable.TitleBar_centerSubText);
+            centerSubTextColor = array.getColor(R.styleable.TitleBar_centerSubTextColor, Color.parseColor("#666666"));
+            centerSubTextSize = array.getDimension(R.styleable.TitleBar_centerSubTextSize, ScreenUtil.dp2PxInt(context, 11));
         } else if (centerType == TYPE_CENTER_SEARCHVIEW) {
-            centerSearchEditable = array.getBoolean(R.styleable.CommonTitleBar_centerSearchEditable, true);
-            centerSearchBgResource = array.getResourceId(R.styleable.CommonTitleBar_centerSearchBg, R.drawable.comm_titlebar_search_gray_shape);
-            centerSearchRightType = array.getInt(R.styleable.CommonTitleBar_centerSearchRightType, TYPE_CENTER_SEARCH_RIGHT_VOICE);
+            centerSearchEditable = array.getBoolean(R.styleable.TitleBar_centerSearchEditable, true);
+            centerSearchBgResource = array.getResourceId(R.styleable.TitleBar_centerSearchBg, R.drawable.titlebar_search_gray_shape);
+            centerSearchRightType = array.getInt(R.styleable.TitleBar_centerSearchRightType, TYPE_CENTER_SEARCH_RIGHT_VOICE);
         } else if (centerType == TYPE_CENTER_CUSTOM_VIEW) {
-            centerCustomViewRes = array.getResourceId(R.styleable.CommonTitleBar_centerCustomView, 0);
+            centerCustomViewRes = array.getResourceId(R.styleable.TitleBar_centerCustomView, 0);
         }
 
         array.recycle();
@@ -304,7 +304,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
             addView(viewBottomLine, bottomLineParams);
         } else if (bottomShadowHeight != 0) {
             viewBottomShadow = new View(context);
-            viewBottomShadow.setBackgroundResource(R.drawable.comm_titlebar_bottom_shadow);
+            viewBottomShadow.setBackgroundResource(R.drawable.titlebar_bottom_shadow);
             LayoutParams bottomShadowParams = new LayoutParams(MATCH_PARENT, ScreenUtil.dp2PxInt(context, bottomShadowHeight));
             bottomShadowParams.addRule(RelativeLayout.BELOW, rlMain.getId());
 
@@ -468,7 +468,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
 
             // 初始化进度条, 显示于标题栏左边
             progressCenter = new ProgressBar(context);
-            progressCenter.setIndeterminateDrawable(getResources().getDrawable(R.drawable.comm_titlebar_progress_draw));
+            progressCenter.setIndeterminateDrawable(getResources().getDrawable(R.drawable.titlebar_progress_draw));
             progressCenter.setVisibility(View.GONE);
             int progressWidth = ScreenUtil.dp2PxInt(context, 18);
             LayoutParams progressParams = new LayoutParams(progressWidth, progressWidth);
@@ -535,7 +535,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
             searchParams.addRule(RelativeLayout.ALIGN_PARENT_START);
             searchParams.setMarginStart(PADDING_12);
             rlMainCenterSearch.addView(ivSearch, searchParams);
-            ivSearch.setImageResource(R.drawable.comm_titlebar_search_normal);
+            ivSearch.setImageResource(R.drawable.titlebar_search_normal);
 
             // 初始化搜索框语音ImageView
             ivVoice = new ImageView(context);
@@ -547,9 +547,9 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
             voiceParams.setMarginEnd(PADDING_12);
             rlMainCenterSearch.addView(ivVoice, voiceParams);
             if (centerSearchRightType == TYPE_CENTER_SEARCH_RIGHT_VOICE) {
-                ivVoice.setImageResource(R.drawable.comm_titlebar_voice);
+                ivVoice.setImageResource(R.drawable.titlebar_voice);
             } else {
-                ivVoice.setImageResource(R.drawable.comm_titlebar_delete_normal);
+                ivVoice.setImageResource(R.drawable.titlebar_delete_normal);
                 ivVoice.setVisibility(View.GONE);
             }
 
@@ -663,9 +663,9 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
         public void afterTextChanged(Editable s) {
             if (centerSearchRightType == TYPE_CENTER_SEARCH_RIGHT_VOICE) {
                 if (TextUtils.isEmpty(s)) {
-                    ivVoice.setImageResource(R.drawable.comm_titlebar_voice);
+                    ivVoice.setImageResource(R.drawable.titlebar_voice);
                 } else {
-                    ivVoice.setImageResource(R.drawable.comm_titlebar_delete_normal);
+                    ivVoice.setImageResource(R.drawable.titlebar_delete_normal);
                 }
             } else {
                 if (TextUtils.isEmpty(s)) {

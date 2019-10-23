@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="CommonTitleBar">
+    <declare-styleable name="TitleBar">
         <!-- 标题栏背景 图片或颜色 -->
         <attr name="titleBarColor" format="color" />
         <!-- 填充状态栏 -->
