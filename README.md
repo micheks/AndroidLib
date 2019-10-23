@@ -192,5 +192,11 @@ protected void onActivityResult(int requestCode, int resultCode, @Nullable Inten
 }
 ``` 
 
-
-我就不信邪了
+##### 3.相机调用
+``` 
+ PhotoUtils.getInstance().camera();
+``` 
+##### 4.打开相册
+``` 
+ PhotoUtils.getInstance().gallery();
+``` 
