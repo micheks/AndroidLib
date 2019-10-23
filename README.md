@@ -314,3 +314,31 @@ titleBar.toggleStatusBarMode();
   }
 ```  
 ###### (2). 若出现页面其他输入组件无法自动获取焦点的情况，请修改配置titlebar:centerTextMarquee="false"  
+
+####  自定义PopupWindow 的使用
+ ```  
+ mPopupWindow = new CustomPopupWindow.Builder(this)
+                     .setContentView(R.layout.pop_item_photo_layout)//设置布局
+                     .setwidth(LinearLayout.LayoutParams.MATCH_PARENT)//设置宽
+                     .setheight(LinearLayout.LayoutParams.WRAP_CONTENT)//设置高
+                     .setFouse(true)//设置是否获取焦点
+                     .setOutSideCancel(true)//设置点击外部是否消失
+                     .builder();
+ 
+ 
+     private void dismissPopWindow() {
+         if (null != mPopupWindow) {
+             mPopupWindow.dismiss();
+         }
+     }
+ 
+     private void showPopWindow() {
+         if (!mPopupWindow.isShowing()) {
+             maskimgView.setVisibility(View.VISIBLE);
+             mPopupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+         } else {
+             mPopupWindow.dismiss();
+         }
+     }
+ 
+```
