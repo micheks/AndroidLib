@@ -255,7 +255,7 @@ public class TitleBar extends RelativeLayout implements View.OnClickListener {
     /**
      * 初始化全局视图
      *
-     * @param context       上下文
+     * @param context 上下文
      */
     private void initGlobalViews(Context context) {
         ViewGroup.LayoutParams globalParams = new ViewGroup.LayoutParams(MATCH_PARENT, WRAP_CONTENT);
@@ -315,7 +315,7 @@ public class TitleBar extends RelativeLayout implements View.OnClickListener {
     /**
      * 初始化主视图
      *
-     * @param context       上下文
+     * @param context 上下文
      */
     private void initMainViews(Context context) {
         if (leftType != TYPE_LEFT_NONE) {
@@ -332,7 +332,8 @@ public class TitleBar extends RelativeLayout implements View.OnClickListener {
     /**
      * 初始化主视图左边部分
      * -- add: adaptive RTL
-     * @param context       上下文
+     *
+     * @param context 上下文
      */
     private void initMainLeftViews(Context context) {
         LayoutParams leftInnerParams = new LayoutParams(WRAP_CONTENT, MATCH_PARENT);
@@ -386,7 +387,8 @@ public class TitleBar extends RelativeLayout implements View.OnClickListener {
     /**
      * 初始化主视图右边部分
      * -- add: adaptive RTL
-     * @param context       上下文
+     *
+     * @param context 上下文
      */
     private void initMainRightViews(Context context) {
         LayoutParams rightInnerParams = new LayoutParams(WRAP_CONTENT, MATCH_PARENT);
@@ -430,7 +432,7 @@ public class TitleBar extends RelativeLayout implements View.OnClickListener {
     /**
      * 初始化主视图中间部分
      *
-     * @param context   上下文
+     * @param context 上下文
      */
     private void initMainCenterViews(Context context) {
         if (centerType == TYPE_CENTER_TEXTVIEW) {
@@ -456,7 +458,7 @@ public class TitleBar extends RelativeLayout implements View.OnClickListener {
             tvCenter.setSingleLine(true);
             // 设置跑马灯效果
             tvCenter.setMaxWidth((int) (ScreenUtil.getScreenPixelSize(context)[0] * 3 / 5.0));
-            if (centerTextMarquee){
+            if (centerTextMarquee) {
                 tvCenter.setEllipsize(TextUtils.TruncateAt.MARQUEE);
                 tvCenter.setMarqueeRepeatLimit(-1);
                 tvCenter.requestFocus();
