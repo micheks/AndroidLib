@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.alliky.core.dialog.util.DialogSettings;
 import com.alliky.core.entity.EventMessage;
 import com.alliky.core.util.Toasty;
 
@@ -62,7 +63,9 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         onInitView(savedInstanceState);
         onInitData();
         onInitEvent();
-
+        DialogSettings.init();
+        DialogSettings.style = DialogSettings.STYLE.STYLE_IOS;
+        DialogSettings.theme = DialogSettings.THEME.LIGHT;
     }
 
     public abstract Object setLayout();
