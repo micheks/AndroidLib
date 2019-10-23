@@ -192,5 +192,21 @@ protected void onActivityResult(int requestCode, int resultCode, @Nullable Inten
 }
 ``` 
 
-
-我就不信邪了
+##### 3.相机调用
+``` 
+ PhotoUtils.getInstance().camera();
+``` 
+##### 4.打开相册
+``` 
+ PhotoUtils.getInstance().gallery();
+``` 
+##### 5.图片裁剪
+``` 
+  /**
+     * @param activity    当前activity
+     * @param orgUri      剪裁原图的Uri
+     * @param desUri      剪裁后的图片的Uri
+     * @param requestCode 剪裁图片的请求码
+     */
+ PhotoUtils.getInstance().cropImageUri(Activity activity, Uri orgUri, Uri desUri, int requestCode);
+``` 
