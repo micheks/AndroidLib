@@ -18,6 +18,8 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+
+
 /**
  * @Description: DOTO
  * @Author: wxianing
@@ -28,6 +30,7 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
     //上下文
     public Context mContext;
     public T mPresenter;
+//    private Unbinder mUnbinder;
 
     @Nullable
     @Override
@@ -46,6 +49,8 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
         }
 
         mContext = getActivity();
+
+//        mUnbinder = ButterKnife.bind(this, rootView);
 
         onInitView(savedInstanceState, rootView);
 
@@ -129,6 +134,7 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+//        mUnbinder.unbind();
         if (EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().unregister(this);
         }
@@ -136,5 +142,6 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
         if (mPresenter != null) {
             mPresenter.detachView();
         }
+
     }
 }
