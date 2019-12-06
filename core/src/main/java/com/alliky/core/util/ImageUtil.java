@@ -450,7 +450,7 @@ public class ImageUtil {
      * Return the clipped bitmap.
      *
      * @param src    The source of bitmap.
-     * @param x      The x coordinate of the first pixel.
+     * @param x      The Utils coordinate of the first pixel.
      * @param y      The y coordinate of the first pixel.
      * @param width  The width.
      * @param height The height.
@@ -468,7 +468,7 @@ public class ImageUtil {
      * Return the clipped bitmap.
      *
      * @param src     The source of bitmap.
-     * @param x       The x coordinate of the first pixel.
+     * @param x       The Utils coordinate of the first pixel.
      * @param y       The y coordinate of the first pixel.
      * @param width   The width.
      * @param height  The height.
@@ -491,7 +491,7 @@ public class ImageUtil {
      * Return the skewed bitmap.
      *
      * @param src The source of bitmap.
-     * @param kx  The skew factor of x.
+     * @param kx  The skew factor of Utils.
      * @param ky  The skew factor of y.
      * @return the skewed bitmap
      */
@@ -503,7 +503,7 @@ public class ImageUtil {
      * Return the skewed bitmap.
      *
      * @param src     The source of bitmap.
-     * @param kx      The skew factor of x.
+     * @param kx      The skew factor of Utils.
      * @param ky      The skew factor of y.
      * @param recycle True to recycle the source of bitmap, false otherwise.
      * @return the skewed bitmap
@@ -519,9 +519,9 @@ public class ImageUtil {
      * Return the skewed bitmap.
      *
      * @param src The source of bitmap.
-     * @param kx  The skew factor of x.
+     * @param kx  The skew factor of Utils.
      * @param ky  The skew factor of y.
-     * @param px  The x coordinate of the pivot point.
+     * @param px  The Utils coordinate of the pivot point.
      * @param py  The y coordinate of the pivot point.
      * @return the skewed bitmap
      */
@@ -537,9 +537,9 @@ public class ImageUtil {
      * Return the skewed bitmap.
      *
      * @param src     The source of bitmap.
-     * @param kx      The skew factor of x.
+     * @param kx      The skew factor of Utils.
      * @param ky      The skew factor of y.
-     * @param px      The x coordinate of the pivot point.
+     * @param px      The Utils coordinate of the pivot point.
      * @param py      The y coordinate of the pivot point.
      * @param recycle True to recycle the source of bitmap, false otherwise.
      * @return the skewed bitmap
@@ -563,7 +563,7 @@ public class ImageUtil {
      *
      * @param src     The source of bitmap.
      * @param degrees The number of degrees.
-     * @param px      The x coordinate of the pivot point.
+     * @param px      The Utils coordinate of the pivot point.
      * @param py      The y coordinate of the pivot point.
      * @return the rotated bitmap
      */
@@ -579,7 +579,7 @@ public class ImageUtil {
      *
      * @param src     The source of bitmap.
      * @param degrees The number of degrees.
-     * @param px      The x coordinate of the pivot point.
+     * @param px      The Utils coordinate of the pivot point.
      * @param py      The y coordinate of the pivot point.
      * @param recycle True to recycle the source of bitmap, false otherwise.
      * @return the rotated bitmap
@@ -942,7 +942,7 @@ public class ImageUtil {
      * @param content  The content of text.
      * @param textSize The size of text.
      * @param color    The color of text.
-     * @param x        The x coordinate of the first pixel.
+     * @param x        The Utils coordinate of the first pixel.
      * @param y        The y coordinate of the first pixel.
      * @return the bitmap with text watermarking
      */
@@ -962,7 +962,7 @@ public class ImageUtil {
      * @param content  The content of text.
      * @param textSize The size of text.
      * @param color    The color of text.
-     * @param x        The x coordinate of the first pixel.
+     * @param x        The Utils coordinate of the first pixel.
      * @param y        The y coordinate of the first pixel.
      * @param recycle  True to recycle the source of bitmap, false otherwise.
      * @return the bitmap with text watermarking
@@ -992,7 +992,7 @@ public class ImageUtil {
      *
      * @param src       The source of bitmap.
      * @param watermark The image watermarking.
-     * @param x         The x coordinate of the first pixel.
+     * @param x         The Utils coordinate of the first pixel.
      * @param y         The y coordinate of the first pixel.
      * @param alpha     The alpha of watermark.
      * @return the bitmap with image watermarking
@@ -1009,7 +1009,7 @@ public class ImageUtil {
      *
      * @param src       The source of bitmap.
      * @param watermark The image watermarking.
-     * @param x         The x coordinate of the first pixel.
+     * @param x         The Utils coordinate of the first pixel.
      * @param y         The y coordinate of the first pixel.
      * @param alpha     The alpha of watermark.
      * @param recycle   True to recycle the source of bitmap, false otherwise.

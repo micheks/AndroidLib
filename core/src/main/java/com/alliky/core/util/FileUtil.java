@@ -15,6 +15,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.os.StatFs;
 import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Base64;
@@ -23,6 +24,7 @@ import android.widget.TextView;
 
 import com.alliky.core.R;
 import com.alliky.core.config.Kylin;
+import com.alliky.core.net.Utils;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -52,6 +54,9 @@ import java.util.zip.ZipInputStream;
  * date 2018/6/26
  */
 public final class FileUtil {
+
+
+    public static final String AUTHORITY = AppUtil.getPackageName(Kylin.getApplicationContext()) + ".fileprovider";
 
     //格式化的模板
     private static final String TIME_FORMAT = "_yyyyMMdd_HHmmss";
@@ -1013,6 +1018,127 @@ public final class FileUtil {
         }
     }
 
+
+    public static File getCacheDir(String dirName) {
+        File result = null;
+        if (isDiskAvailable()) {
+            File cacheDir = Utils.app().getExternalCacheDir();
+            if (cacheDir != null) {
+                result = new File(cacheDir, dirName);
+            }
+        }
+        if (result == null) {
+            result = new File(Utils.app().getCacheDir(), dirName);
+        }
+        if (result.exists() || result.mkdirs()) {
+            return result;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * 检查磁盘空间是否大于10mb
+     *
+     * @return true 大于
+     */
+    public static boolean isDiskAvailable() {
+        long size = getDiskAvailableSize();
+        return size > 10 * 1024 * 1024L; // > 10bm
+    }
+
+    /**
+     * 获取磁盘可用空间
+     *
+     * @return byte
+     */
+    public static long getDiskAvailableSize() {
+        if (!existsSdcard()) return 0;
+        File path = Environment.getExternalStorageDirectory(); // 取得sdcard文件路径
+        StatFs stat = new StatFs(path.getAbsolutePath());
+        long blockSize = 0;
+        long availableBlocks = 0;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN_MR2) {
+            blockSize = stat.getBlockSizeLong();
+            availableBlocks = stat.getAvailableBlocksLong();
+        } else {
+            blockSize = stat.getBlockSize();
+            availableBlocks = stat.getAvailableBlocks();
+        }
+        return availableBlocks * blockSize;
+    }
+
+    public static Boolean existsSdcard() {
+        return Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);
+    }
+
+    public static long getFileOrDirSize(File file) {
+        if (!file.exists()) return 0;
+        if (!file.isDirectory()) return file.length();
+
+        long length = 0;
+        File[] list = file.listFiles();
+        if (list != null) { // 文件夹被删除时, 子文件正在被写入, 文件属性异常返回null.
+            for (File item : list) {
+                length += getFileOrDirSize(item);
+            }
+        }
+
+        return length;
+    }
+
+    /**
+     * 复制文件到指定文件
+     *
+     * @param fromPath 源文件
+     * @param toPath   复制到的文件
+     * @return true 成功，false 失败
+     */
+    public static boolean copy(String fromPath, String toPath) {
+        boolean result = false;
+        File from = new File(fromPath);
+        if (!from.exists()) {
+            return result;
+        }
+
+        File toFile = new File(toPath);
+        IOUtil.deleteFileOrDir(toFile);
+        File toDir = toFile.getParentFile();
+        if (toDir.exists() || toDir.mkdirs()) {
+            FileInputStream in = null;
+            FileOutputStream out = null;
+            try {
+                in = new FileInputStream(from);
+                out = new FileOutputStream(toFile);
+                IOUtil.copy(in, out);
+                result = true;
+            } catch (Throwable ex) {
+                Logger.d(ex.getMessage(), ex);
+                result = false;
+            } finally {
+                IOUtil.closeQuietly(in);
+                IOUtil.closeQuietly(out);
+            }
+        }
+        return result;
+    }
+
+    public static boolean deleteFileOrDir(File path) {
+        if (path == null || !path.exists()) {
+            return true;
+        }
+        if (path.isFile()) {
+            return path.delete();
+        }
+        File[] files = path.listFiles();
+        if (files != null) {
+            for (File file : files) {
+                deleteFileOrDir(file);
+            }
+        }
+        return path.delete();
+    }
+
     public interface FileOperateCallback {
         void onSuccess();
 
@@ -1023,8 +1149,8 @@ public final class FileUtil {
             //{后缀名，MIME类型}
             {".3gp", "video/3gpp"},
             {".apk", "application/vnd.android.package-archive"},
-            {".asf", "video/x-ms-asf"},
-            {".avi", "video/x-msvideo"},
+            {".asf", "video/Utils-ms-asf"},
+            {".avi", "video/Utils-msvideo"},
             {".bin", "application/octet-stream"},
             {".bmp", "image/bmp"},
             {".c", "text/plain"},
@@ -1037,8 +1163,8 @@ public final class FileUtil {
             {".xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"},
             {".exe", "application/octet-stream"},
             {".gif", "image/gif"},
-            {".gtar", "application/x-gtar"},
-            {".gz", "application/x-gzip"},
+            {".gtar", "application/Utils-gtar"},
+            {".gz", "application/Utils-gzip"},
             {".h", "text/plain"},
             {".htm", "text/html"},
             {".html", "text/html"},
@@ -1046,17 +1172,17 @@ public final class FileUtil {
             {".java", "text/plain"},
             {".jpeg", "image/jpeg"},
             {".jpg", "image/jpeg"},
-            {".js", "application/x-javascript"},
+            {".js", "application/Utils-javascript"},
             {".log", "text/plain"},
-            {".m3u", "audio/x-mpegurl"},
+            {".m3u", "audio/Utils-mpegurl"},
             {".m4a", "audio/mp4a-latm"},
             {".m4b", "audio/mp4a-latm"},
             {".m4p", "audio/mp4a-latm"},
             {".m4u", "video/vnd.mpegurl"},
-            {".m4v", "video/x-m4v"},
+            {".m4v", "video/Utils-m4v"},
             {".mov", "video/quicktime"},
-            {".mp2", "audio/x-mpeg"},
-            {".mp3", "audio/x-mpeg"},
+            {".mp2", "audio/Utils-mpeg"},
+            {".mp3", "audio/Utils-mpeg"},
             {".mp4", "video/mp4"},
             {".mpc", "application/vnd.mpohun.certificate"},
             {".mpe", "video/mpeg"},
@@ -1073,19 +1199,19 @@ public final class FileUtil {
             {".pptx", "application/vnd.openxmlformats-officedocument.presentationml.presentation"},
             {".prop", "text/plain"},
             {".rc", "text/plain"},
-            {".rmvb", "audio/x-pn-realaudio"},
+            {".rmvb", "audio/Utils-pn-realaudio"},
             {".rtf", "application/rtf"},
             {".sh", "text/plain"},
-            {".tar", "application/x-tar"},
-            {".tgz", "application/x-compressed"},
+            {".tar", "application/Utils-tar"},
+            {".tgz", "application/Utils-compressed"},
             {".txt", "text/plain"},
-            {".wav", "audio/x-wav"},
-            {".wma", "audio/x-ms-wma"},
-            {".wmv", "audio/x-ms-wmv"},
+            {".wav", "audio/Utils-wav"},
+            {".wma", "audio/Utils-ms-wma"},
+            {".wmv", "audio/Utils-ms-wmv"},
             {".wps", "application/vnd.ms-works"},
             {".xml", "text/plain"},
-            {".z", "application/x-compress"},
-            {".zip", "application/x-zip-compressed"},
+            {".z", "application/Utils-compress"},
+            {".zip", "application/Utils-zip-compressed"},
             {"", "*/*"}
     };
 

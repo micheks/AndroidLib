@@ -19,6 +19,8 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import butterknife.ButterKnife;
+
 
 /**
  * @Description: DOTO
@@ -61,7 +63,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         mContext = this;
         mActivity = this;
 
-//        ButterKnife.bind(this);
+        ButterKnife.bind(this);
 
         onInitView(savedInstanceState);
         onInitData();

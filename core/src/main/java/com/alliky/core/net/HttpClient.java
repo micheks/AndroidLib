@@ -4,14 +4,21 @@ import android.content.Context;
 
 import com.alliky.core.config.Kylin;
 import com.alliky.core.net.callback.HttpService;
+import com.alliky.core.net.callback.ICancelled;
 import com.alliky.core.net.callback.IError;
+import com.alliky.core.net.callback.IFSuccess;
 import com.alliky.core.net.callback.IFailure;
+import com.alliky.core.net.callback.IFinished;
 import com.alliky.core.net.callback.ILoading;
 import com.alliky.core.net.callback.IRequest;
+import com.alliky.core.net.callback.IStarted;
 import com.alliky.core.net.callback.ISuccess;
+import com.alliky.core.net.callback.IWaiting;
 import com.alliky.core.net.download.DownloadHandler;
+import com.alliky.core.net.download.DownloadHelper;
 import com.alliky.core.net.loader.Loader;
 import com.alliky.core.net.loader.LoaderStyle;
+import com.alliky.core.net.upload.UploadHelper;
 import com.alliky.core.util.NetUtil;
 import com.alliky.core.util.Toasty;
 
@@ -40,10 +47,19 @@ public final class HttpClient {
     private final String DOWNLOAD_DIR;
     private final String EXTENSION;
     private final String NAME;
+    private final String SAVEPATH;
+
+
     private final ISuccess SUCCESS;
+    private final IFSuccess<File> FSUCCESS;
     private final ILoading LOADING;
     private final IFailure FAILURE;
     private final IError ERROR;
+    private final ICancelled CANCELLED;
+    private final IFinished FINISHED;
+    private final IWaiting WAITING;
+    private final IStarted STARTED;
+
     private final RequestBody BODY;
     private final LoaderStyle LOADER_STYLE;
     private final boolean CANCELABLE;
@@ -56,11 +72,19 @@ public final class HttpClient {
                String downloadDir,
                String extension,
                String name,
+               String savePath,
+
                IRequest request,
                ISuccess success,
+               IFSuccess<File> fsuccess,
+
                ILoading loading,
                IFailure failure,
                IError error,
+               ICancelled cancelled,
+               IFinished finished,
+               IWaiting waiting,
+               IStarted started,
                RequestBody body,
                File file,
                Context context,
@@ -82,6 +106,12 @@ public final class HttpClient {
         this.CANCELABLE = cancelable;
         this.CONTEXT = context;
         this.LOADER_STYLE = loaderStyle;
+        this.FSUCCESS = fsuccess;
+        this.CANCELLED = cancelled;
+        this.FINISHED = finished;
+        this.WAITING = waiting;
+        this.STARTED = started;
+        this.SAVEPATH = savePath;
     }
 
     /**
@@ -138,11 +168,17 @@ public final class HttpClient {
                 call = service.delete(URL, PARAMS, HEADERS);
                 break;
             case UPLOAD:
+
+
                 final RequestBody requestBody =
                         RequestBody.create(MediaType.parse(MultipartBody.FORM.toString()), FILE);
                 final MultipartBody.Part body =
                         MultipartBody.Part.createFormData("file", FILE.getName(), requestBody);
+
+
                 call = service.upload(URL, body, HEADERS);
+
+
                 break;
             default:
                 break;
@@ -197,12 +233,18 @@ public final class HttpClient {
     }
 
     public final void upload() {
-        request(HttpMethod.UPLOAD);
+//        request(HttpMethod.UPLOAD);
+
+
+        new UploadHelper(URL,PARAMS,HEADERS,SUCCESS,CANCELLED,FINISHED,WAITING,STARTED,ERROR,LOADING).upLoadFile();
+
     }
 
     public final void download() {
-        new DownloadHandler(URL, REQUEST, DOWNLOAD_DIR, EXTENSION, NAME,
-                SUCCESS, LOADING, FAILURE, ERROR)
-                .handleDownload();
+//        new DownloadHandler(URL, REQUEST, DOWNLOAD_DIR, EXTENSION, NAME,
+//                SUCCESS, LOADING, FAILURE, ERROR)
+//                .handleDownload();
+
+        new DownloadHelper(URL, PARAMS,HEADERS,SAVEPATH,FSUCCESS, CANCELLED, FINISHED, WAITING, STARTED, ERROR, LOADING).downLoadFile();
     }
 }

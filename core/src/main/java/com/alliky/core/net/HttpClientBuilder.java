@@ -2,11 +2,16 @@ package com.alliky.core.net;
 
 import android.content.Context;
 
+import com.alliky.core.net.callback.ICancelled;
 import com.alliky.core.net.callback.IError;
+import com.alliky.core.net.callback.IFSuccess;
 import com.alliky.core.net.callback.IFailure;
+import com.alliky.core.net.callback.IFinished;
 import com.alliky.core.net.callback.ILoading;
 import com.alliky.core.net.callback.IRequest;
+import com.alliky.core.net.callback.IStarted;
 import com.alliky.core.net.callback.ISuccess;
+import com.alliky.core.net.callback.IWaiting;
 import com.alliky.core.net.loader.LoaderStyle;
 
 import java.io.File;
@@ -29,6 +34,13 @@ public final class HttpClientBuilder {
     private ILoading mILoading = null;
     private IFailure mIFailure = null;
     private IError mIError = null;
+
+    private IFSuccess<File> mIFSuccess = null;
+    private ICancelled mICancelled = null;
+    private IFinished mIFinished = null;
+    private IWaiting mIWaiting = null;
+    private IStarted mIStarted = null;
+
     private RequestBody mBody = null;
     private Context mContext = null;
     private LoaderStyle mLoaderStyle = null;
@@ -36,8 +48,8 @@ public final class HttpClientBuilder {
     private String mDownloadDir = null;
     private String mExtension = null;
     private String mName = null;
+    private String mSavePath = null;
     private boolean mCancelable = true;
-
 
     HttpClientBuilder() {
     }
@@ -54,6 +66,11 @@ public final class HttpClientBuilder {
 
     public final HttpClientBuilder params(String key, Object value) {
         PARAMS.put(key, value);
+        return this;
+    }
+
+    public final HttpClientBuilder savePath(String savePath) {
+        this.mSavePath = savePath;
         return this;
     }
 
@@ -107,6 +124,37 @@ public final class HttpClientBuilder {
         return this;
     }
 
+    public final HttpClientBuilder fsuccess(IFSuccess<File> iFSuccess) {
+        this.mIFSuccess = iFSuccess;
+        return this;
+    }
+
+    /**
+     * private IFinished mIFinished = null;
+     * private IWaiting mIWaiting = null;
+     * private IStarted mIStarted = null;
+     */
+
+    public final HttpClientBuilder started(IStarted iStarted) {
+        this.mIStarted = iStarted;
+        return this;
+    }
+
+    public final HttpClientBuilder waiting(IWaiting iWaiting) {
+        this.mIWaiting = iWaiting;
+        return this;
+    }
+
+    public final HttpClientBuilder finished(IFinished iFinished) {
+        this.mIFinished = iFinished;
+        return this;
+    }
+
+    public final HttpClientBuilder cancelled(ICancelled iCancelled) {
+        this.mICancelled = iCancelled;
+        return this;
+    }
+
     public final HttpClientBuilder loading(ILoading iLoading) {
         this.mILoading = iLoading;
         return this;
@@ -143,9 +191,9 @@ public final class HttpClientBuilder {
 
     public final HttpClient build() {
         return new HttpClient(mUrl, PARAMS, HEADERS,
-                mDownloadDir, mExtension, mName,
-                mIRequest, mISuccess, mILoading, mIFailure,
-                mIError, mBody, mFile, mContext, mCancelable,
+                mDownloadDir, mExtension, mName, mSavePath,
+                mIRequest, mISuccess, mIFSuccess, mILoading, mIFailure,
+                mIError, mICancelled, mIFinished, mIWaiting, mIStarted, mBody, mFile, mContext, mCancelable,
                 mLoaderStyle);
     }
 }

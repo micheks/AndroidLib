@@ -209,7 +209,7 @@ public class SPUtil {
             sharedata.commit();
         } catch (IOException e) {
             e.printStackTrace();
-            LogUtil.i("", "保存obj失败");
+            Logger.i("", "保存obj失败");
         }
     }
 

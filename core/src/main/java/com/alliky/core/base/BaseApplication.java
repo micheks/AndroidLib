@@ -2,6 +2,8 @@ package com.alliky.core.base;
 
 import android.app.Application;
 
+import com.alliky.core.net.Utils;
+
 /**
  * @Description: DOTO
  * @Author: wxianing
@@ -12,5 +14,6 @@ public class BaseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Utils.Ext.init(this);
     }
 }
