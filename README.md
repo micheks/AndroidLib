@@ -789,10 +789,10 @@ TipDialog.show(MainActivity.this, "成功！", TipDialog.TYPE.SUCCESS).setOnDism
 dialog.setBackgroundResId(int resId);
 ```
 
-###TDialog
+### TDialog
 主要解决PopupWindow上input输入框复制粘贴问题，很大程度上也封装完善了个各种弹窗功能、自定义布局等。
 
-####TDialog在Activity或者Fragment中使用
+#### TDialog在Activity或者Fragment中使用
 ```
 
         new TDialog.Builder(getSupportFragmentManager())
@@ -849,7 +849,7 @@ dialog.setBackgroundResId(int resId);
                 .show();    //展示
 
 ```
-####添加动画姿势
+#### 添加动画姿势
 ```
 新建补间动画文件
 enter.xml
