@@ -71,29 +71,13 @@ public class HttpCreator {
             Interceptor httpResponseStatusInterceptor = new Interceptor() {
                 @Override
                 public Response intercept(Chain chain) throws IOException {
-
                     Request request = chain.request();
-
                     Response response = chain.proceed(request);
-
-//                    MyApplication.applictionHandle.sendEmptyMessage(MyApplication.MSG_HTTP_ERROR);
-
                     try {
                         int code = response.code();
                         if (code != 200) {
                             String url = request.url().toString();
                             Log.d(code + "", url);
-                            if (code == 401) {
-                                //1、退出 2、重新登录
-                                //FIXME
-//                                MyApplication.applictionHandle.sendEmptyMessage(MyApplication.MSG_RELOAG);
-                            } else if (code == 408) {
-                                //网络超时
-//                                ToastUtil.showCenter(Kylin.getApplicationContext(),"网络请求超时!");
-                            } else {
-                                //其他异常
-//                                MyApplication.applictionHandle.sendEmptyMessage(MyApplication.MSG_HTTP_ERROR);
-                            }
                         }
                     } catch (Exception e) {
                         e.printStackTrace();

@@ -74,7 +74,6 @@ public final class RequestCallbacks implements Callback<String> {
                 ERROR.onError(response.code(), response.message());
             }
         }
-
         onRequestFinish();
     }
 
@@ -82,10 +81,6 @@ public final class RequestCallbacks implements Callback<String> {
     public void onFailure(Call<String> call, Throwable t) {
 
         Logger.e("onFailure", "URL：" + URL + "\n\n" + t.getMessage());
-
-//        if (t instanceof SocketTimeoutException) {
-//            ToastUtil.showl(Kylin.getContext(), "网络请求超时");
-//        }
 
         if (FAILURE != null) {
             FAILURE.onFailure(t);

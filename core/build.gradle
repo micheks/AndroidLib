@@ -62,6 +62,6 @@ dependencies {
 
     api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
 
-    implementation 'com.jakewharton:butterknife:10.0.0'
+    api 'com.jakewharton:butterknife:10.0.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
 }

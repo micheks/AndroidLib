@@ -4,6 +4,11 @@ import android.content.Context;
 
 import com.alliky.core.base.BaseView;
 import com.alliky.core.callback.CallbackListener;
+import com.alliky.core.net.parser.AppBean;
+import com.alliky.sample.bean.Shopping;
+import com.alliky.sample.bean.User;
+
+import java.util.List;
 
 /**
  * @Description: DOTO
@@ -13,18 +18,17 @@ import com.alliky.core.callback.CallbackListener;
 public interface MainContract {
 
     interface View extends BaseView {
-        void getVehicleListResult(String response);
+        void loginResult(User user);
+        void getShopListResult(List<Shopping> list);
     }
 
     interface Model {
-
-        void getVehicleList(Context context, String cityName,  final CallbackListener<String> listener);
-
+        void login(Context context, String username, String password, final CallbackListener<User> listener);
+        void getShopList(Context context,int pageNum,int pageSize,final CallbackListener<List<Shopping>> listener);
     }
 
     interface Presenter {
-
-        void getVehicleList(String cityName);
-
+        void login(String username, String password);
+        void getShopList(int pageNum,int pageSize);
     }
 }

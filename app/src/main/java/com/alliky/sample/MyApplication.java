@@ -17,10 +17,8 @@ public class MyApplication extends BaseApplication {
         //初始化常用配置
         Kylin.init(this)
                 .withLoaderDelayed(500)
-                .withApiHost("http://192.168.2.9:88/")
+                .withApiHost("http://192.168.0.102:8088/")
                 .withInterceptor(new DebugInterceptor("test", R.raw.test))
                 .configure();
     }
-
-
 }
